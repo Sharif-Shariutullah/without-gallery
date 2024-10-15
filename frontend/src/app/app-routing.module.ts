@@ -43,8 +43,8 @@ const routes: Routes = [
 
   { path: " ", component: HomeComponent},
 
-{ path: "login", component: LoginComponent},
-{ path: "signup", component: SignupComponent},
+{ path: "admin", component: LoginComponent},
+// { path: "signup", component: SignupComponent},
 { path: "home", component: HomeComponent},
 // { path: "order", component: TrackOrderComponent},
 { path: "career", component: CareerComponent},

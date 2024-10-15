@@ -32,6 +32,6 @@ export class AppComponent {
 
   logout() {
     UserstorageService.signOut();
-    this.router.navigateByUrl('login');
+    this.router.navigateByUrl('admin');
   }
 }

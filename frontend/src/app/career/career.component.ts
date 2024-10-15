@@ -124,6 +124,16 @@ export class CareerComponent implements OnInit {
       formData.append('pdfFile', this.selectedFile);
     }
 
+  // Show loading SweetAlert before sending the form
+  Swal.fire({
+    title: 'Submitting your application...',
+    text: 'Please wait while we process your data.',
+    allowOutsideClick: false,  // Prevent closing by clicking outside
+    didOpen: () => {
+      Swal.showLoading();  // Show loading animation
+    }
+  });
+  
     this.applyService.applyForNewJob(formData).subscribe(
       (response: JobApplicant) => {
         Swal.fire({
