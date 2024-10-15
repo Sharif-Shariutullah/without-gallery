@@ -1,0 +1,861 @@
+<!-- Row  1 of 6 -->
+
+<div class="features-section py-5 bg">
+  <div class="container">
+    <h2 class="fs-1 fw-bold text-center pt-5 pb-5 text-primary">
+      Career Opportunity
+    </h2>
+
+    <div class="row g-5 pb-5">
+      <div class="col-12 col-md-3 d-flex justify-content-center order-2 order-md-1">
+        <img src="assets\career-1.png" alt="Left Image" class="rounded-img img-fluid" />
+      </div>
+
+      <!-- text  -->
+
+      <div class="col-12 col-md-6 text-center order-1 order-md-2">
+        <div class="card px-3 py-4 shadow-sm blue-bg text-center">
+          <h1 class="fs-1 lh-1 lh-sm fw-bolder">
+            Be part of a team that's always innovating.
+          </h1>
+          <br />
+          <div class="fs-6 lh-base">
+            Join our team as a software engineer and experience a dynamic work
+            environment with opportunities for growth. Be part of a passionate
+            and cohesive team delivering innovative software solutions.
+          </div>
+
+          <button class="btn btn-primary px-5 py-3 mt-3 fs-5 fw-medium" type="button" (click)="scrollToSection()">
+            Explore Job Openings
+            <span style="align-items: center"><mat-icon>open_in_new</mat-icon></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3 d-flex justify-content-center order-2 order-md-3">
+        <img src="assets\career-2.png" alt="Right Image" class="rounded-img img-fluid" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Row  2 of 6 -->
+
+<div class="py-5 text-white bg-contrast">
+  <div class="container">
+    <h1 class="fs-1 fw-bold text-center pt-5 pb-1 " style="color: #F5F5F5;">
+      Why Join Us?
+    </h1>
+
+    <p class="fs-6 px-5 pb-5 text-center">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid tenetur
+      accusantium est qui iure accusamus laudantium, quibusdam laboriosam amet
+      quo quod, cum, repellat sunt quisquam nobis? Rerum neque ad natus.
+    </p>
+
+    <div class="row g-4 pb-5">
+      <div class="col-12 col-md-4 text-center order-1 order-md-1">
+        <img src="assets\photo\aaaa.jpg" alt="Right Image" class="rounded-img" />
+      </div>
+
+      <!-- 1st column   -->
+
+      <div class="col-12 col-md-4 justify-content-center order-2 order-md-1" style="padding-left: 50px">
+
+
+        <div class="d-flex align-items-center  mt-4 ">
+          <div class="me-3 icon-style bg-circle bg-circle-1"><i class="fa-solid fa-building-circle-check"></i> </div>
+          <div class="text">
+            <p>Top-tier Software Outsourcing Development Company</p>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="d-flex align-items-center mt-lg-5 mt-5">
+          <div class="me-3 icon-style bg-circle bg-circle-2"> <i class="fa-solid fa-clock"></i> </div>
+          <div class="text">
+            <p>Flexible Work-Hours</p>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center mt-lg-5 mt-5">
+          <div class="me-3 icon-style bg-circle bg-circle-3"><i class="fa-solid fa-ranking-star"></i></div>
+          <div class="text">
+            <p>Revolutionary Software Culture</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2nd column  -->
+
+      <div class="col-12 col-md-4 justify-content-center order-3 order-md-3" style="padding-left: 50px">
+        <div class="d-flex align-items-center mt-4">
+          <div class="me-3 icon-style bg-circle bg-circle-4"><i class="fa-solid fa-code-compare"></i></div>
+          <div class="text">
+            <p>Knowledge Sharing</p>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center mt-lg-5 mt-5 ">
+          <div class="me-3 icon-style bg-circle bg-circle-5"><i class="fa-solid fa-gamepad"></i></div>
+          <div class="text">
+            <p>Game Zone</p>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center mt-lg-5 mt-5">
+          <div class="me-3 icon-style bg-circle bg-circle-6"><i class="fa-solid fa-money-bill-trend-up"></i></div>
+          <div class="text">
+            <p>Competitive Remuneration</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Row  3 of 6 -->
+<section id="jobDetails">
+  <div class="features-section py-5 ">
+    <div class="container">
+      <h2 class="fs-1 fw-bold text-center pt-5 pb-5 text-primary">
+        Open Position
+      </h2>
+
+      <div class="row g-5 pb-5">
+
+
+
+        <!-- -------------------------- data  ------------------------------->
+
+
+
+
+        <div class="job-listing" *ngFor="let j of jobDetails">
+          <div class="job-details">
+            <div class="job-title">{{ j.jobTitle }}</div>
+            <div class="job-meta">
+              <span class="px-5 pb-2"><i class="fa-solid fa-hourglass-start"></i>&nbsp; <b>Deadline:</b> &nbsp; {{
+                j.applicationDeadline | date:'mediumDate' }}</span>
+              <span class="px-5 pb-2"><i class="fas fa-bolt"></i>&nbsp; <b>Experience:</b> &nbsp; {{
+                j.experienceRequired }} years</span>
+              <span class="px-5 pb-2"><i class="fa-solid fa-bangladeshi-taka-sign"></i>&nbsp; <b>Salary:</b> &nbsp; {{
+                j.salary | currency:'৳ ' }}</span>
+            </div>
+          </div>
+          <!-- <div style="display: flex; justify-content: flex-end;"> -->
+          <button class="apply-button" routerLink="/applicationForm" routerLinkActive="active">Apply Now</button>
+
+          <!-- </div> -->
+        </div>
+
+
+
+        <!-- -----------------------------normarl-------------- -->
+
+
+
+        <!-- Job Listing  1-->
+
+
+        <!-- <div class="job-listing ">
+      <div class="job-details">
+        <div class="job-title ">Digital Marketer (SEO Intern)</div>
+        <div class="job-meta">
+          <span><i class="fas fa-map-marker-alt"></i> Rajshahi, Bangladesh</span>
+          <span class="px-5"><i class="fas fa-bolt"></i> Fresher</span>
+        </div>
+      </div>
+      <button class="apply-button">Apply Now</button>
+    </div> -->
+
+
+        <!-- Job Listing 2 -->
+        <!-- <div class="job-listing">
+    <div class="job-details">
+      <div class="job-title">Senior Software Engineer L1</div>
+      <div class="job-meta">
+        <span><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</span>
+        <span class="px-5"><i class="fas fa-bolt"></i> 3+ Years Exp.</span>
+      </div>
+    </div>
+    <button class="apply-button">Apply Now</button>
+  </div>
+     -->
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- Row  4 of 6    Our Industry -->
+
+<div class="features-section py-5 bg-contrast">
+  <div class="container text-center my-5">
+    <h1 class=" fw-bold text-center pt-5 text-white ">
+      Our Industry Expertises
+
+    </h1>
+
+    <div class="text-white text-center mb-5 fs-5 py-5 px-lg-5" style="line-height: 140%;">
+      Our deep understanding of diverse industries empowers us to design customized software solutions.
+      Let our expertise be the catalyst for your next triumph
+    </div>
+    <div class="row justify-content-center">
+
+
+
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-1">
+          <i class="icon-industry fas fa-paint-brush"></i>
+          <h4>UI/UX Design</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-2">
+          <i class="icon-industry fas fa-mobile-alt"></i>
+          <h4>Mobile App</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-3">
+          <i class="icon-industry fas fa-laptop-code"></i>
+          <h4>Web Application</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-4">
+          <i class="icon-industry fas fa-database"></i>
+          <h4>Data Management</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-5">
+          <i class="icon-industry fas fa-file-alt"></i>
+          <h4>Document Handling</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-6">
+          <i class="icon-industry fas fa-clipboard"></i>
+          <h4>Administrative Support</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-7">
+          <i class="icon-industry fas fa-shopping-cart"></i>
+          <h4>E-Commerce</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-8">
+          <i class="icon-industry fas fa-headset"></i>
+          <h4>Customer Support</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-1">
+          <i class="icon-industry fas fa-tools"></i>
+          <h4>Technical/Help Desk Support</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-2">
+          <i class="icon-industry fas fa-comments"></i>
+          <h4>Live Chat Support</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-3">
+          <i class="icon-industry fas fa-envelope"></i>
+          <h4>SMS/Email Support</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-4">
+          <i class="icon-industry fas fa-chart-bar"></i>
+          <h4>Customer Surveys</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-5">
+          <i class="icon-industry fas fa-phone-alt"></i>
+          <h4>Telemarketing</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-6">
+          <i class="icon-industry fas fa-robot"></i>
+          <h4>Chat Bots</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-7">
+          <i class="icon-industry fas fa-search"></i>
+          <h4>SEO</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-8">
+          <i class="icon-industry fab fa-facebook"></i>
+          <h4>Facebook Marketing</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-1">
+          <i class="icon-industry fab fa-instagram"></i>
+          <h4>Instagram Marketing</h4>
+        </div>
+      </div>
+
+      <!-- <div class="col-sm-2 col-md-2 col-lg-3">
+          <div class="expertise-card icon-bg-color-2">
+            <i class="icon-industry fas fa-share-alt"></i>
+            <h4>Social Media Marketing</h4>
+          </div>
+        </div> -->
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-3">
+          <i class="icon-industry fab fa-youtube"></i>
+          <h4>YouTube Marketing</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-4">
+          <i class="icon-industry fas fa-ad"></i>
+          <h4>Google AdSense</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-5">
+          <i class="icon-industry fas fa-bullhorn"></i>
+          <h4>Advertising</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-6">
+          <i class="icon-industry fas fa-graduation-cap"></i>
+          <h4>Skills Development</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-7">
+          <i class="icon-industry fas fa-file-alt"></i>
+          <h4>Content Development</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-8">
+          <i class="icon-industry fas fa-cube"></i>
+          <h4>3D Animation</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-1">
+          <i class="icon-industry fas fa-video"></i>
+          <h4>Video Editing</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-2">
+          <i class="icon-industry fas fa-film"></i>
+          <h4>Video Animation</h4>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-3">
+        <div class="expertise-card icon-bg-color-3">
+          <i class="icon-industry fas fa-paint-brush"></i>
+          <h4>Graphics Design</h4>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+
+
+
+  <!-- <div class="container">
+    <h1 class="fs-1 fw-bold text-center pt-5 text-white">
+      Our Industry Expertises
+
+          </h1>
+
+<div class="text-white text-center mb-3">
+  Our deep understanding of diverse industries empowers us to design customized software solutions. Let our expertise be the catalyst for your next triumph
+</div>
+
+
+    <div class="row g-5 pb-5">
+
+
+      <div class="col-md-6 col-lg-3"></div>
+      <div class="col-md-6 col-lg-3"></div>
+      <div class="col-md-6 col-lg-3"></div>
+
+
+
+    </div>
+  </div> -->
+</div>
+
+
+
+<!-- Row  5 of 6 -->
+
+<div class=" py-5 bg">
+  <div class="container">
+
+
+
+
+    <div class="row g-2 py-2">
+      <div class="col-md-8 col-lg-8">
+        <h2 class="fs-1 fw-bold text-center pt-5 pb-5 text-primary">
+          Share Our Values
+        </h2>
+      </div>
+      <div class="col-md-4 col-lg-4">
+
+        <div class="justify-content-center fs-6"
+          style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+          At our company, we believe in fostering a culture built on honesty, respect, and collaboration. We strive to
+          create an inclusive environment where everyone is valued and encouraged to bring their unique perspectives and
+          ideas to the table.
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+
+    <div class="row g-5 pb-5">
+
+      <div class="col-md-4 col-lg-3 ">
+        <div class="me-3 icon-style bg-circle share-icon"><i class="fa-solid fa-people-group"></i></div>
+        <h2 class="pt-4"> TEAMWORK </h2>
+
+        <p class="text">
+          The key to success is working together as a united team.
+        </p>
+
+      </div>
+
+
+
+      <div class="col-md-4 col-lg-3">
+        <div class="me-3 icon-style bg-circle share-icon"><i class="fa-solid fa-user-tie"></i></div>
+
+        <h2 class="pt-4"> PROFESSIONALISM </h2>
+
+        <p class="text">
+          Our team consists of experienced professionals who incorporate a constant drive for excellence.</p>
+      </div>
+
+
+
+
+      <!-- image  -->
+      <div class="col-md-4 col-lg-6">
+        <div class="image-container">
+
+          <img src="assets\left-up.jpg" alt="Left Image" class="half-quarter-img-left-up " />
+
+
+          <img src="assets\right-up.jpg" alt="Left Image" class="half-quarter-img-right-up " />
+
+
+
+
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="row g-2 pb-2">
+
+
+
+      <div class="col-md-4 col-lg-3 ">
+
+        <div class="me-3 icon-style bg-circle share-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+
+        <h2 class="pt-4"> EFFICIENCY </h2>
+
+        <p class="text">
+          No matter where in the world we are positioned, we all have a common goal, we support each other and we work
+          together to achieve it.</p>
+
+      </div>
+
+
+      <div class="col-md-4 col-lg-3">
+        <div class="me-3 icon-style bg-circle share-icon"><i class="fa-regular fa-lightbulb"></i></div>
+
+        <h2 class="pt-4"> INNOVATION </h2>
+
+        <p class="text">
+          We are always on the lookout for new and better ways to solve problems and enhance our services</p>
+      </div>
+
+
+
+
+      <div class="col-md-4 col-lg-6">
+
+
+        <div class="image-container">
+
+          <img src="assets\left-down.jpg" alt="Left Image" class="half-quarter-img-left-down" />
+
+
+          <img src="assets\right-down.jpg" alt="Left Image" class="half-quarter-img-right-down " />
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="row g-5 pb-5">
+      <div class=" text-center fs-1 pt-5 text-primary fw-bolder">
+        Let's Create Magic Together </div>
+
+
+
+
+
+    </div>
+
+    <div class="text-center">
+      <button class="btn explore-button " type="button" (click)="scrollToSection()">
+        Explore Careers <span><i class="fa-solid fa-arrow-right"></i></span>
+
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Row  6 of 6 -->
+
+<div class=" pt-5  bg-contrast">
+
+
+  <div class="container">
+
+    <h1 class=" fw-bold text-center pt-5 text-white ">
+      Show Us Your Superpower
+
+    </h1>
+
+    <div class="text-white text-center mb-5 fs-5 py-2 px-lg-5" style="line-height: 140%;">
+      As we continue to grow our core values stay the same and guide us through everything we do – from hiring to
+      helping customers.
+    </div>
+
+
+
+
+
+    <div class="row ">
+
+      <div class=" text-center ">
+
+
+        <div class="resume-form-wrapper">
+          <form #applicationForm="ngForm" (ngSubmit)="applyForNewJob(applicationForm)">
+
+            <!-- <i class="fa-regular fa-user"></i> -->
+
+            <h2 class="text-white">Your Contact Information</h2>
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" class="resume-input form-control" id="name" name="name" placeholder="Your name"
+                  required [(ngModel)]="application.name">
+
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="resume-input form-control" id="address" name="address" placeholder="Address"
+                  required [(ngModel)]="application.address">
+
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-6">
+                <input type="text" class="resume-input form-control" id="phone" name="phone" placeholder="Mobile(+880 )"
+                  required [(ngModel)]="application.phone">
+              </div>
+
+              <div class="col-md-6">
+                <input type="email" class="resume-input form-control" id="email" name="email" placeholder="Email"
+                  required [(ngModel)]="application.email">
+              </div>
+
+            </div>
+
+
+
+
+
+
+
+            <h2 class="text-white">Professional Information</h2>
+            <div class="row">
+              <div class="col-md-6">
+                <label style="text-align: left; font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"> Position
+ </label>
+               
+                <input type="text" class="resume-input form-control" placeholder="Which Position do you apply?"
+                  id="position" name="position" required [(ngModel)]="application.position">
+               
+                </div>
+              <div class="col-md-6">
+                <label style="text-align: left; font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"> Experience
+</label>
+                <input type="number" class="resume-input form-control" placeholder="Years of experience"
+                  id="yearsOfExperience" name="yearsOfExperience" required [(ngModel)]="application.yearsOfExperience">
+            
+                
+                </div>
+            </div>
+
+            <div class="row row-cols-2">
+              <div class="col-12">
+                <textarea rows="4" class="resume-input form-control" placeholder="Skills" id="skills" name="skills"
+                  required [(ngModel)]="application.skills"></textarea>
+
+
+                </div>
+            </div>
+    
+
+
+            <!-- <div class="row mb-3">
+              <div class="col-12">
+                <label for="resume-cv-upload" class="form-label fs-4">
+                  <i class="fas fa-paperclip"></i> Attach CV
+                </label>
+                <input type="file" class="resume-input" id="resume-cv-upload" required>
+              </div>
+
+            </div> -->
+    
+            <div class="row">
+              <div class="col-12">
+                <button type="submit" class="resume-btn-submit">Apply Now</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+
+
+    
+  </div>
+
+
+</div>    
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container mt-5 p-2">
+
+
+
+
+  <table mat-table [dataSource]="applicationDetails" class="mat-elevation-z8">
+
+     <!-- firstName, lastName, email, phone, dateOfBirth, applicationDate -->
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="ID">
+          <th mat-header-cell *matHeaderCellDef style="background-color: aquamarine;"> <b>ID</b> </th>
+          <td mat-cell *matCellDef="let element" style="background-color: grey;"> <b>{{element.applicantId}}</b> </td>
+      </ng-container>
+
+      <!-- Job Title Column -->
+      <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef style="background-color: aquamarine;"> <b> Name </b> </th>
+          <td mat-cell *matCellDef="let element"> {{element.firstName}} &nbsp; {{element.lastName}} </td>
+      </ng-container>
+
+      <!-- Job Description Column -->
+      <ng-container matColumnDef="Email">
+          <th mat-header-cell *matHeaderCellDef style="background-color: aquamarine;"> <b>Email</b> </th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <!-- Phone Column -->
+      <ng-container matColumnDef="Phone">
+          <th mat-header-cell *matHeaderCellDef style="background-color: aquamarine;"> <b>Phone</b> </th>
+          <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+      </ng-container>
+
+      <!-- Experience Column -->
+      <ng-container matColumnDef="Date Of Birth">
+          <th mat-header-cell *matHeaderCellDef style="background-color: aquamarine;"> <b>Date Of Birth</b> </th>
+          <td mat-cell *matCellDef="let element" style="text-align: center;"> <b>{{element.dateOfBirth}}</b> </td>
+      </ng-container>
+
+
+      <!-- Education Column -->
+      <ng-container matColumnDef="Application Date">
+          <th mat-header-cell *matHeaderCellDef style="background-color: aquamarine;"> <b>Application Date</b> </th>
+          <td mat-cell *matCellDef="let element"> {{element.applicationDate}} </td>
+      </ng-container>
+
+   
+
+
+
+      <!-- Contact Column -->
+      <ng-container matColumnDef="Contact">
+          <th mat-header-cell *matHeaderCellDef style="background-color: aquamarine; text-align: center;"> <b>Contact</b> </th>
+          <td mat-cell *matCellDef="let element" style="text-align: justify; "> {{element.contactInformation}} </td>
+      </ng-container>
+
+
+        <!-- Edit Column -->
+        <ng-container matColumnDef="Edit">
+          <th mat-header-cell *matHeaderCellDef style="background-color: aquamarine;"> <b>Edit</b> </th>
+          <td mat-cell *matCellDef="let element"> 
+              
+              <!-- <button mat-icon-button color="primary" (click)="editJobPost(element.id)"> -->
+              <button mat-icon-button color="primary" >
+              <mat-icon>edit</mat-icon>    
+              </button>
+          
+          
+          
+          </td>
+      </ng-container>
+
+
+        <!-- Delete Column -->
+        <ng-container matColumnDef="Delete">
+          <th mat-header-cell *matHeaderCellDef style="background-color: aquamarine;"> <b>Delete</b> </th>
+          <td mat-cell *matCellDef="let element"> 
+              
+              
+              <!-- <button mat-icon-button color="warn" (click)="deleteJobPost(element.id)"> -->
+              <button mat-icon-button color="warn" >
+                  <mat-icon>delete</mat-icon>    
+                  </button>
+          
+          
+          
+          </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+
+
+
+
+
+
+
+</div>
+

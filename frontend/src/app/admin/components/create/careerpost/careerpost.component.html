@@ -1,0 +1,317 @@
+
+<!-- 
+<h1>
+  <div
+    style="
+      padding: 3%;
+      text-align: center;
+      position: static;
+      background-color: rgb(151, 255, 173);
+    "
+  >
+    <b> Create a new Job</b>
+  </div>
+</h1> -->
+
+
+<div class="container my-5">
+  <div class="card p-4 shadow-lg" style="background-color: #e0f7fa;">
+    <h1 class="text-center mb-4" style="background-color: #00bcd4; color: white; padding: 15px;">
+      <i class="fa-solid fa-briefcase"></i> <b> &nbsp;  Create a New Job</b>
+    </h1>
+
+    <form #jobPostingForm="ngForm" (ngSubmit)="createJob(jobPostingForm)">
+      <div class="row g-3">
+        <!-- Job Title -->
+        <div class="col-md-6">
+          <label for="jobTitle" class="form-label">
+            <i class="fa-solid fa-newspaper"></i> Job Title
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            id="jobTitle"
+            [(ngModel)]="jobPost.jobTitle"
+            name="jobTitle"
+            placeholder="Enter Job Title"
+          />
+        </div>
+
+        <!-- Job Description -->
+        <div class="col-md-6">
+          <label for="jobDescription" class="form-label">
+            <i class="fa-solid fa-file-alt"></i> Overview (Description)
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            id="jobDescription"
+            [(ngModel)]="jobPost.jobDescription"
+            name="jobDescription"
+            placeholder="Enter Job Overview"
+          />
+        </div>
+
+        <!-- Salary -->
+        <div class="col-md-6">
+          <label for="salary" class="form-label">
+            <i class="fa-solid fa-dollar-sign"></i> Salary
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            id="salary"
+            [(ngModel)]="jobPost.salary"
+            name="salary"
+            placeholder="Enter Salary"
+          />
+        </div>
+
+        <!-- Experience -->
+        <div class="col-md-6">
+          <label for="experienceRequired" class="form-label">
+            <i class="fa-solid fa-briefcase"></i> Experience
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            id="experienceRequired"
+            [(ngModel)]="jobPost.experienceRequired"
+            name="experienceRequired"
+            placeholder="Enter Experience"
+          />
+        </div>
+
+        <!-- Education -->
+        <div class="col-md-6">
+          <label for="educationQualification" class="form-label">
+            <i class="fa-solid fa-graduation-cap"></i> Education
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            id="educationQualification"
+            [(ngModel)]="jobPost.educationQualification"
+            name="educationQualification"
+            placeholder="Enter Education Qualification"
+          />
+        </div>
+
+        <!-- Application Deadline -->
+        <div class="col-md-6">
+          <label for="applicationDeadline" class="form-label">
+            <i class="fa-solid fa-calendar-day"></i> Deadline
+          </label>
+          <input
+            type="date"
+            class="form-control"
+            id="applicationDeadline"
+            [(ngModel)]="jobPost.applicationDeadline"
+            name="applicationDeadline"
+          />
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+        <div class="col-md-12">
+          <label for="responsibilities" class="form-label">
+            <i class="fa-solid fa-tasks"></i> Responsibilities
+          </label>
+          <div *ngFor="let responsibility of jobPost.responsibilities; let i = index trackBy: trackByIndex" class="mb-3">
+            <input
+              type="text"
+              class="form-control mb-2"
+              [(ngModel)]="jobPost.responsibilities[i]"
+              name="responsibility{{i}}"
+              placeholder="Enter Responsibility"
+            />
+            <button type="button" class="btn btn-danger" (click)="removeResponsibility(i)">
+              <i class="fa-solid fa-trash"></i> Remove
+            </button>
+          </div>
+          <button type="button" class="btn btn-primary mb-4" (click)="addResponsibility()">
+            <i class="fa-solid fa-plus"></i> Add Responsibility
+          </button>
+        </div>
+
+        <div class="col-md-12">
+          <label for="requirements" class="form-label">
+            <i class="fa-solid fa-clipboard-list"></i> Requirements
+          </label>
+          <div *ngFor="let requirement of jobPost.requirements; let i = index trackBy: trackByIndex" class="mb-3">
+            <input
+              type="text"
+              class="form-control mb-2"
+              [(ngModel)]="jobPost.requirements[i]"
+              name="requirements{{i}}"
+              placeholder="Enter Requirement"
+            />
+            <button type="button" class="btn btn-danger" (click)="removeRequirements(i)">
+              <i class="fa-solid fa-trash"></i> Remove
+            </button>
+          </div>
+          <button type="button" class="btn btn-primary mb-4" (click)="addRequirements()">
+            <i class="fa-solid fa-plus"></i> Add Requirement
+          </button>
+        </div>
+
+        <div class="col-md-12">
+          <label for="whatWeOffer" class="form-label">
+            <i class="fa-solid fa-gift"></i> What We Offer
+          </label>
+          <div *ngFor="let offer of jobPost.whatWeOffer; let i = index trackBy: trackByIndex" class="mb-3">
+            <input
+              type="text"
+              class="form-control mb-2"
+              [(ngModel)]="jobPost.whatWeOffer[i]"
+              name="whatWeOffer{{i}}"
+              placeholder="Enter Offer"
+            />
+            <button type="button" class="btn btn-danger" (click)="removeWhatWeOffer(i)">
+              <i class="fa-solid fa-trash"></i> Remove
+            </button>
+          </div>
+          <button type="button" class="btn btn-primary mb-4" (click)="addWhatWeOffer()">
+            <i class="fa-solid fa-plus"></i> Add Offer
+          </button>
+        </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Dynamic Responsibilities, Requirements, and What We Offer (three fields in one row) -->
+<div class="row pt-5">
+  <!-- Responsibilities -->
+  <div class="col-md-4">
+    <label for="responsibilities" class="form-label">
+      <i class="fa-solid fa-tasks"></i> Responsibilities
+    </label>
+    <div *ngFor="let responsibility of jobPost.responsibilities; let i = index trackBy: trackByIndex" class="mb-3 d-flex">
+      <input
+        type="text"
+        class="form-control me-2"
+        [(ngModel)]="jobPost.responsibilities[i]"
+        name="responsibility{{i}}"
+        placeholder="Enter Responsibility"
+      />
+      <button type="button" class="btn btn-danger btn-sm" (click)="removeResponsibility(i)">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    </div>
+    <br>
+    <button type="button" class="btn btn-primary btn-sm mb-4" (click)="addResponsibility()">
+      <i class="fa-solid fa-plus"></i> Add 
+    </button>
+  </div>
+
+  <!-- Requirements -->
+  <div class="col-md-4">
+    <label for="requirements" class="form-label">
+      <i class="fa-solid fa-clipboard-list"></i> Requirements
+    </label>
+    <div *ngFor="let requirement of jobPost.requirements; let i = index trackBy: trackByIndex" class="mb-3 d-flex">
+      <input
+        type="text"
+        class="form-control me-2"
+        [(ngModel)]="jobPost.requirements[i]"
+        name="requirement{{i}}"
+        placeholder="Enter Requirement"
+      />
+      <button type="button" class="btn btn-danger btn-sm" (click)="removeRequirements(i)">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    </div>
+
+    <br>
+
+    <button type="button" class="btn btn-warning btn-sm mb-4" (click)="addRequirements()">
+      <i class="fa-solid fa-plus"></i> Add 
+    </button>
+  </div>
+
+  <!-- What We Offer -->
+  <div class="col-md-4">
+    <label for="whatWeOffer" class="form-label">
+      <i class="fa-solid fa-gift"></i> What We Offer
+    </label>
+    <div *ngFor="let offer of jobPost.whatWeOffer; let i = index trackBy: trackByIndex" class="mb-3 d-flex">
+      <input
+        type="text"
+        class="form-control me-2"
+        [(ngModel)]="jobPost.whatWeOffer[i]"
+        name="whatWeOffer{{i}}"
+        placeholder="Enter Offer"
+      />
+      <button type="button" class="btn btn-danger btn-sm" (click)="removeWhatWeOffer(i)">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    </div>
+    <br>
+
+    <button type="button" class="btn btn-info btn-sm mb-4" (click)="addWhatWeOffer()">
+      <i class="fa-solid fa-plus"></i> Add 
+    </button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Submit Button -->
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-success">
+            <i class="fa-solid fa-paper-plane"></i> Create Job
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

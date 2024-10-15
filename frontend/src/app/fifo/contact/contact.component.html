@@ -1,0 +1,204 @@
+
+
+
+<div class="container text-center pt-5">
+  <div class="row">
+    <!-- Get in Touch with Us -->
+
+    <div class="col-md-4 col-12 px-4 leftSideInfo shadow-lg p-3 mb-5 bg-body rounded">
+      <div class=" fs-3" >
+        <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: bold;" class="text-primary" >Get in Touch with Us</h1>
+      </div>
+
+      <div class="border-all">
+        <div>
+          <h1>Office</h1>
+          <p>9th Floor, Janata Tower, Software Technology Park, Dhaka-1215</p>
+        </div>
+
+        <div>
+          <h1>Email Address</h1>
+          <p>info&commat;fifo-tech.com</p>
+        </div>
+
+        <div>
+          <h1>Phone</h1>
+          <p>
+            +88-02-44810012-3 <br />
+            +880 1927 666 222 <br />
+            Saturday-Thursday (09 am-06 pm)
+          </p>
+        </div>
+
+        <div>
+          <h1>Follow Us</h1>
+
+          <div>
+            <ul class="nav justify-content-center">
+              <li class="nav-item">
+                <a
+                  href="https://www.facebook.com/FIFOTech/"
+                  class="nav-link px-2 text-muted"
+                >
+                  <i
+                    class="fa-brands fa-facebook"
+                    style="color: #4267b2; font-size: 24px"
+                  ></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  href="https://www.youtube.com/channel/UCD9upeq2pAQzYv9B-Gz07fg"
+                  class="nav-link px-2 text-muted"
+                >
+                  <i
+                    class="fa-brands fa-youtube"
+                    style="color: #ff0000; font-size: 24px"
+                  ></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  href="https://bd.linkedin.com/company/fifotech"
+                  class="nav-link px-2 text-muted"
+                >
+                  <i
+                    class="fa-brands fa-linkedin"
+                    style="color: #0077b5; font-size: 24px"
+                  ></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+      <div class="ratio ratio-16x9 mt-4 ">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d767.6999687099809!2d90.39316385863866!3d23.753902230792583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8a27c4e1837%3A0xeb9630655cfd1ac7!2sFIFOTech!5e0!3m2!1sen!2sbd!4v1727087678223!5m2!1sen!2sbd" 
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+      </div>
+    </div>
+
+    <!-- contact form  -->
+
+    <div class="col-md-8 col-12 mt-md-5 mt-sm-3">
+      <h1
+        style="
+          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+            sans-serif; 
+        "
+      >
+        Ask for Help
+      </h1>
+
+      <div class="container">
+        <form #ContactForm="ngForm" (ngSubmit)="createContact(ContactForm)">
+          <!-- input -->
+
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Company Name</mat-label>
+            <input
+              matInput
+              placeholder="FIFO-Tech Company"
+              [(ngModel)]="clientContactObject.companyName"
+              name="companyName"
+            />
+            <mat-icon matPrefix>apartment</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Address</mat-label>
+            <input
+              matInput
+              placeholder="9th floor, Janata Tower, Software Technology Park, Dhaka-1215"
+              [(ngModel)]="clientContactObject.companyAddress"
+              name="companyAddress"
+            />
+            <mat-icon matPrefix>pin_drop</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Your Name</mat-label>
+            <input
+              matInput
+              placeholder="Full Name"
+              [(ngModel)]="clientContactObject.clientName"
+              name="clientName"
+              required
+            />
+            <mat-icon matPrefix>account_circle</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              placeholder="abc@example.com"
+              [(ngModel)]="clientContactObject.email"
+              name="email"
+              required
+            />
+            <mat-icon matPrefix>mail</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="w-50">
+            <mat-label>Tel-Phone</mat-label>
+            <input
+              matInput
+              placeholder="02-44810012"
+              [(ngModel)]="clientContactObject.companyPhone"
+              name="companyPhone"
+            />
+            <mat-icon matPrefix>dialpad</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="w-50 p-2">
+            <mat-label>Mobile</mat-label>
+            <input
+              matInput
+              placeholder="+880 1927 666 222(required)"
+              [(ngModel)]="clientContactObject.companyMobileNumber"
+              name="companyMobileNumber"
+              required
+            />
+            <mat-icon matPrefix>call</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Message</mat-label>
+            <textarea
+              matInput
+              rows="6"
+              style="width: 100%"
+              placeholder="Message"
+              [(ngModel)]="clientContactObject.message"
+              name="message"
+              required
+            ></textarea>
+            <mat-icon matPrefix>chat_info</mat-icon>
+          </mat-form-field>
+
+          <button
+            type="submit"
+            mat-raised-button
+            style="background-color: #0d6efd; color: white; font-weight: bold;"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

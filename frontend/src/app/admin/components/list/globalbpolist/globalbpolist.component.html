@@ -1,0 +1,100 @@
+
+<div class="container">
+
+
+<div class="py-5 container" style="align-items: center; justify-content: center; text-align: center;">
+  <button type="submit" class="btn btn-success btn-block fs-3" routerLink="/globalBpoPost" routerLinkActive="Active">
+    <i class="fa-solid fa-circle-plus"></i>&nbsp; Add More
+  </button>
+</div>
+
+<div class="container mt-5">
+  <h1 class="text-center mb-4 text-primary fs-1">
+    <i class="fas fa-list-alt"></i> Post List
+  </h1>
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+  
+  <!-- <div class="container"> -->
+    <table class="bpo-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th><i class="fa-solid fa-fingerprint"></i> Id</th>
+
+          <th><i class="fa-solid fa-panorama"></i> Thumbnail</th>
+          <th><i class="fas fa-folder"></i> Title</th>
+          <th><i class="fas fa-tag"></i> Subtitle</th>
+          <th><i class="fas fa-info-circle"></i> Details</th>
+          <th><i class="fas fa-calendar-alt"></i> Posted On</th>
+          <th><i class="fas fa-images"></i> Images</th> 
+          <th><i class="fa-solid fa-trash text-danger"></i> Delete</th> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bpo of globalBPOs; let i = index" class="bpo-item">
+
+          <td class="bg-dark-subtle"> {{ i + 1 }}</td>
+
+          <td>{{ bpo.id }}</td>
+         <!-- Thumbnail Image Preview -->
+         <td>
+          <img *ngIf="bpo.thumbnailImage" [src]="bpo.thumbnailImage" alt="Thumbnail" class="img-thumbnail" width="100" height="100" />
+        </td>
+          <td>{{ bpo.title }}</td>
+          <td>{{ bpo.subtitle }}</td>
+          <td>{{ bpo.details }}</td>
+          <td>{{ bpo.postDate }}</td>
+          <td>
+            <div class="image-list">
+              <div *ngFor="let image of bpo.images; let i = index" class="image-item">
+                <img [src]="image.img" alt="{{ image.caption }}" class="bpo-image" (click)="openModal(image.img)" />
+                <p class="image-caption">{{ image.caption }}</p>
+
+              </div>
+            </div>
+          </td>
+
+
+  <td>
+
+  <i class="fa-solid fa-trash text-danger" (click)="deleteButton(bpo.id)"></i> 
+
+
+  </td>
+
+          
+        </tr>
+      </tbody>
+    </table>
+  <!-- </div> -->
+  
+  <!-- Modal for displaying enlarged image -->
+  <div class="modal" *ngIf="isModalOpen">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()"><i class="fa-solid fa-rectangle-xmark"></i></span>
+      <img [src]="currentImage" class="modal-image" />
+    </div>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

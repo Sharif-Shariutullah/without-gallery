@@ -1,0 +1,372 @@
+<!-- <div class=" container job-details" >
+    <h1>{{ jobDetailsWithData.jobTitle }}</h1>
+    <p>{{ jobDetailsWithData.jobDescription }}</p>
+    <p>Salary: {{ jobDetailsWithData.salary}}</p>
+    <p>Experience Required: {{ jobDetailsWithData.experienceRequired }}</p>
+  </div>
+  
+
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br> -->
+
+
+<div class=" job-details" >
+<div class="header-bg"> 
+<div class="container">
+  <div class="header">
+      <div class="title">{{ jobDetailsWithData.jobTitle }}</div>
+      <div class="talent">
+          <img src="https://picsum.photos/200/300" alt="Profile Picture">
+          <div class="info">
+
+             <div class="p-info">
+              Top Talents 
+             <span  class="count"  #countElement data-count="300"> 0+</span>
+            </div>
+
+             </div>
+      </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+  <div class="container">
+  
+  <div class="content">
+      <h3>Overview</h3>
+      <p>{{ jobDetailsWithData.jobDescription }}</p>
+  </div>
+
+  <!-- <div class="content">
+      <h3>Requirements:</h3>
+      <p>[Add your job requirements here]</p>
+  </div> -->
+
+
+
+
+
+<div class="job-details py-1 mt-1">
+
+
+  <h2 >Responsibilities</h2>
+
+  <ul>
+    <li *ngFor="let responsibility of jobDetailsWithData.responsibilities">
+      {{ responsibility }}
+    </li>
+  </ul>
+
+
+
+
+
+    <!-- <h2 >Responsibilities</h2>
+    <ul>
+        <li>Develop and implement comprehensive digital marketing strategies.</li>
+        <li>Oversee and coordinate the digital marketing team to ensure successful campaign execution.</li>
+        <li>Manage SEO, SEM, email marketing, social media, and content marketing efforts.</li>
+        <li>Analyze performance metrics and adjust strategies to optimize ROI.</li>
+        <li>Collaborate with cross-functional teams to align marketing efforts with business goals.</li>
+        <li>Stay updated on industry trends and emerging digital marketing techniques.</li>
+    </ul> -->
+
+
+
+
+
+
+
+    <h2>Requirements</h2>
+  
+    <ul>
+      <li *ngFor="let requirements of jobDetailsWithData.requirements">
+        {{ requirements }}
+      </li>
+    </ul>
+
+
+
+
+
+
+
+
+
+    <!-- <h2>Requirements</h2>
+    <ul>
+        <li>5-6 years of experience in digital marketing.</li>
+        <li>Strong leadership and project management skills.</li>
+        <li>Proficiency in digital marketing tools and analytics platforms.</li>
+        <li>Excellent communication and teamwork abilities.</li>
+        <li>Up-to-date with the latest industry trends and technologies in web development.</li>
+        <li>Good problem-solving, troubleshooting skills.</li>
+        <li>Playing (football, cricket) and singing quality is definitely a plus.</li>
+    </ul> -->
+
+
+
+
+
+    <h2>What we offer</h2>
+    <ul>
+      <li *ngFor="let whatWeOffer of jobDetailsWithData.whatWeOffer">
+        {{ whatWeOffer }}
+      </li>
+    </ul>
+
+
+
+
+    <!-- <h2>What we offer</h2>
+    <ul>
+        <li>Good working environment.</li>
+        <li>Weekly holiday: 2 Days.</li>
+        <li>Festival bonus: 2.</li>
+        <li>Friendly work environment (Game room, gym facilities, music corner).</li>
+        <li>Scope for professional development & career growth.</li>
+        <li>Other perks as per company policy.</li>
+    </ul> -->
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+<div class="container">
+<h2>Job Information</h2>
+<table class="table">
+    <tbody>
+        <tr>
+            <th><i class="fas fa-map-marker-alt"></i>&nbsp; Location</th>
+            <td>9th Floor, Janata Tower, Software Technology Park, Dhaka-1215</td>
+        </tr>
+        <tr>
+            <th><i class="fas fa-calendar-alt"></i>&nbsp; Deadline</th>
+            <td style="font-weight: bolder;">{{ jobDetailsWithData.applicationDeadline | date:'mediumDate' }}</td>
+        </tr>
+        <tr>
+            <th><i class="fas fa-briefcase"></i>&nbsp; Position</th>
+            <td>{{ jobDetailsWithData.jobTitle }}</td>
+        </tr>
+        <tr>
+            <th><i class="fas fa-graduation-cap"></i>&nbsp; Education</th>
+            <td>{{ jobDetailsWithData.educationQualification }}</td>
+        </tr>
+        <tr>
+            <th><i class="fas fa-bolt"></i>&nbsp; Experience</th>
+            <td style="font-weight: bolder;">{{ jobDetailsWithData.experienceRequired }} Years</td>
+        </tr>
+        <tr>
+            <th><i class="fas fa-money-bill-wave"></i>&nbsp; Salary</th>
+            <td>{{ jobDetailsWithData.salary | currency:'৳ '}} BDT</td>
+        </tr>
+    </tbody>
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- 
+<h2>Job Information</h2>
+        <table class="table " >
+            <tbody>
+                <tr>
+                    <th>Location</th>
+                    <td>9th Floor, Janata Tower, Software Technology Park, Dhaka-1215</td>
+                </tr>
+                <tr>
+                    <th>Deadline</th>
+                    <td style="font-weight: bolder;">{{ jobDetailsWithData.applicationDeadline | date:'mediumDate' }}</td>
+                </tr>
+                <tr>
+                    <th>Position</th>
+                    <td>{{ jobDetailsWithData.jobTitle}}</td>
+                </tr>
+
+                <tr>
+                  <th>Educational Qualification</th>
+                  <td>{{ jobDetailsWithData.educationQualification}}</td>
+              </tr>
+
+                <tr>
+                  <th> <i class="fas fa-bolt"></i>&nbsp; Experience</th>
+                  <td style="font-weight: bolder;">{{ jobDetailsWithData.experienceRequired}} BDT</td>
+              </tr>
+                <tr>
+                    <th> <i class="fa-solid fa-bangladeshi-taka-sign"></i>&nbsp;  Salary</th>
+                    <td>{{ jobDetailsWithData.salary | currency:'৳ '}} BDT</td>
+                </tr>
+            </tbody>
+        </table>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Row  6 of 6 -->
+
+<div class=" pt-5  bg-contrast">
+
+
+  <div class="container">
+
+    <h1 class=" fw-bold text-center pt-5 text-white ">
+      Show Us Your Superpower
+
+    </h1>
+
+    <div class="text-white text-center mb-5 fs-5 py-2 px-lg-5" style="line-height: 140%;">
+      As we continue to grow our core values stay the same and guide us through everything we do – from hiring to
+      helping customers.
+    </div>
+
+
+
+
+
+    <div class="row ">
+
+      <div class=" text-center ">
+
+
+        <div class="resume-form-wrapper">
+          <form #applicationForm="ngForm" (ngSubmit)="applyForNewJob(applicationForm)">
+
+            <!-- <i class="fa-regular fa-user"></i> -->
+
+            <h2 class="text-white">Your Contact Information</h2>
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" class="resume-input form-control" id="name" name="name" placeholder="Your name"
+                  required [(ngModel)]="application.name">
+
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="resume-input form-control" id="address" name="address" placeholder="Address"
+                  required [(ngModel)]="application.address">
+
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-6">
+                <input type="text" class="resume-input form-control" id="phone" name="phone" placeholder="Mobile(+880 )"
+                  required [(ngModel)]="application.phone">
+              </div>
+
+              <div class="col-md-6">
+                <input type="email" class="resume-input form-control" id="email" name="email" placeholder="Email"
+                  required [(ngModel)]="application.email">
+              </div>
+
+            </div>
+
+
+
+
+
+
+
+            <h2 class="text-white">Professional Information</h2>
+            <div class="row">
+              <div class="col-md-6">
+                <label style="text-align: left; font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"> Position
+ </label>
+               
+                <input type="text" class="resume-input form-control" placeholder="Which Position do you apply?"
+                  id="position" name="position" required [(ngModel)]="application.position">
+               
+                </div>
+              <div class="col-md-6">
+                <label style="text-align: left; font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"> Experience
+</label>
+                <input type="number" class="resume-input form-control" placeholder="Years of experience"
+                  id="yearsOfExperience" name="yearsOfExperience" required [(ngModel)]="application.yearsOfExperience">
+            
+                
+                </div>
+            </div>
+
+            <div class="row row-cols-2">
+              <div class="col-12">
+                <textarea rows="4" class="resume-input form-control" placeholder="Skills" id="skills" name="skills"
+                  required [(ngModel)]="application.skills"></textarea>
+
+
+                </div>
+            </div>
+    
+
+
+            <div class="row mb-3">
+              <div class="col-12">
+                <label for="resume-cv-upload" class="form-label fs-4">
+                  <i class="fas fa-paperclip"></i> Attach CV
+                </label>
+                <input type="file" class="resume-input" id="resume-cv-upload" required  (change)="onFileSelected($event)" accept=".pdf">
+              </div>
+
+            </div>
+    
+            <div class="row">
+              <div class="col-12">
+                <button type="submit" class="resume-btn-submit">Apply Now</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+
+
+    
+  </div>
+
+
+</div>    
+ 
+
+
+

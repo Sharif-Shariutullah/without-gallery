@@ -1,0 +1,36 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { CustomerComponent } from './customer.component';
+import { CartComponent } from './components/cart/cart.component';
+import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ViewOrderedProductsComponent } from './components/view-ordered-products/view-ordered-products.component';
+import { ReviewOrderedProductComponent } from './components/review-ordered-product/review-ordered-product.component';
+import { ViewProductDetailComponent } from './components/view-product-detail/view-product-detail.component';
+import { ViewWishlistComponent } from './components/view-wishlist/view-wishlist.component';
+import { ApplicationFormComponent } from '../career/application-form/application-form.component';
+
+
+
+const routes: Routes = [
+  { path: '', component: CustomerComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'myOrders', component: MyOrdersComponent },
+  { path: 'ordered_products/:orderedId', component: ViewOrderedProductsComponent }, // ???
+  { path: 'review/:productId', component: ReviewOrderedProductComponent }, // ???
+  { path: 'product/:productId', component: ViewProductDetailComponent }, // ???
+  { path: 'wishlist', component: ViewWishlistComponent },
+  
+  { path: "job-Details/:id", component: ApplicationFormComponent},
+
+  
+
+
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class CustomerRoutingModule { }
