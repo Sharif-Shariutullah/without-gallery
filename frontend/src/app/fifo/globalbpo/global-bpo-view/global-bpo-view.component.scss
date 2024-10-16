@@ -47,21 +47,21 @@
   // }
   
 
-  .image-container {
-    width: 100%;
-    height: 300px; /* Fixed height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f0f0f0; /* Optional: adds a background to fill empty space */
-  }
+  // .image-container {
+  //   width: 100%;
+  //   height: 300px; /* Fixed height */
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   background-color: #f0f0f0; /* Optional: adds a background to fill empty space */
+  // }
 
 
-  .image-container img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain; /* Ensures the entire image is visible without being cut off */
-  }
+  // .image-container img {
+  //   max-width: 100%;
+  //   max-height: 100%;
+  //   object-fit: contain; /* Ensures the entire image is visible without being cut off */
+  // }
   
   
   .modal {
@@ -112,6 +112,61 @@
   
     .modal-dialog {
       max-width: 90%; /* Adjust modal size for mobile screens */
+    }
+  }
+  
+
+
+
+
+  
+
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%; /* This maintains a 4:3 aspect ratio, you can adjust */
+    overflow: hidden;
+  }
+  
+  .image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container */
+  }
+  
+  .caption-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Light black transparent background */
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  /* Responsive layout */
+  @media (min-width: 768px) {
+    .col-md-6 {
+      flex: 0 0 50%; /* Two columns per row */
+      max-width: 50%;
+    }
+  }
+  
+
+
+  .custom-carousel-img {
+    width: 100%;
+    max-height: 400px; /* Control the max height to prevent images from being too tall */
+    object-fit: cover; /* Maintain aspect ratio and fill the space */
+  }
+  
+  @media (max-width: 768px) {
+    .custom-carousel-img {
+      max-height: 250px; /* Reduce the height for smaller screens */
     }
   }
   

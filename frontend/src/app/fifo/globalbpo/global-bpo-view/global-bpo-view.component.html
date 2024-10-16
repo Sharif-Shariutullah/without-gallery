@@ -24,8 +24,14 @@
     <!-- Title -->
     <h1 class="fs-1 fw-bold text-dark mb-5">{{ bpo.title }}</h1>
     
+<!-- thumbnail  -->
+<div>
+  <img src="assets\photo\test.jpg" class="card-img-top custom-carousel-img" alt="test" />
+</div>
+
+
     <!-- Subtitle -->
-    <h3 class="fs-5 text-muted lh-sm ">{{ bpo.subtitle }}</h3>
+    <h3 class="fs-5 text-muted lh-sm my-3">{{ bpo.subtitle }}</h3>
     
 <!-- error  -->
 <!-- share in social media  -->
@@ -83,17 +89,31 @@
  <!-- Image Section -->
  <div class="row g-3">
     <div class="col-md-6" *ngFor="let image of bpo.images">
-      <div class="card h-100 shadow-sm">
+      <!-- <div class="card h-100 shadow-sm"> -->
+        <div class="image-container position-relative">
+
+
         <!-- Image container with fixed aspect ratio -->
         <div class="image-container">
-          <img [src]="image.img" class="card-img-top img-fluid" (click)="openModal(image.img)" alt="Image for {{ image.caption }}">
+          <img [src]="image.img" class="card-img-top img-fluid w-100" (click)="openModal(image.img)" alt="Image for {{ image.caption }}">
         </div>
-        <div class="card-body text-center">
-          <p class="card-text">{{ image.caption }}</p>
+
+
+        <!-- <div class="card-body text-center"> -->
+          <div class="caption-overlay">
+
+          <p class="card-text text-white">{{ image.caption }}</p>
         </div>
+
+
+
       </div>
     </div>
   </div>
+
+
+
+
 
   <!-- Modal for Image Viewing -->
   <div class="modal" *ngIf="isModalOpen">

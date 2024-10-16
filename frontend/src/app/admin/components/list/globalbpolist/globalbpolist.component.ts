@@ -137,10 +137,3 @@ export class GlobalbpolistComponent implements OnInit {
 
 
 }
-
-
-
-
-
-
-

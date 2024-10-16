@@ -1,6 +1,3 @@
-// .container {
-//   padding: 20px;
-// }
 
 .bpo-list {
   list-style: none;
@@ -46,10 +43,6 @@
   margin-top: 10px;
 }
 
-// .image-list {
-//   display: flex;
-//   flex-wrap: wrap;
-// }
 
 
 .image-list {
@@ -77,12 +70,7 @@
   text-align: center;
 }
 
-// .bpo-image {
-//   width: 100px;
-//   height: auto;
-//   border-radius: 5px;
-//   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-// }
+
 
 .image-caption {
   margin-top: 5px;
@@ -193,3 +181,13 @@
   display: block;
   object-fit: contain; /* Ensure the image fits within the modal */
 }
+
+
+
+/* Define a smaller width for the Details column */
+// .details-column {
+//   // width: 50px; /* Adjust the width as per your needs */
+//   white-space: nowrap; /* Prevent text from wrapping */
+//   overflow: hidden; /* Hide overflowing text */
+//   text-overflow: ellipsis; /* Add ... to indicate truncated text */
+// }
