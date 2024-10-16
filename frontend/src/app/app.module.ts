@@ -52,6 +52,7 @@ import { EditComponent } from './Practice/edit/edit.component';
 import { NavbarComponent } from './fifo/navbar/navbar.component';
 import { ViewNewsComponent } from './fifo/news/view-news/view-news.component';
 import { GlobalBpoViewComponent } from './fifo/globalbpo/global-bpo-view/global-bpo-view.component';
+import { GalleryViewComponent } from './fifo/gallery/gallery-view/gallery-view.component';
 
 
 
@@ -65,7 +66,7 @@ import { GlobalBpoViewComponent } from './fifo/globalbpo/global-bpo-view/global-
                 SignupComponent, 
                 HomeComponent, 
                 TrackOrderComponent, 
-                CareerComponent, ServiceComponent, NewsComponent, GalleryComponent, ContactComponent, GlobalbpoComponent, AboutComponent, ApplicationFormComponent, CareerViewListComponent, TeamComponent, VideoComponent, ContactCenterComponent, BackOfficeComponent, DigitalMarketingComponent, CreativeDesignComponent, AppDesignDevelopmentComponent, SkillsDevelopmentComponent, TowhidHossainComponent, JahangirHossainUzzalComponent, NurulIslamComponent, TariqulHasanComponent, ObaiduHaqueComponent, AtiaBilkisComponent, RashaduzammanRianComponent, TamannaSharkerComponent, CreateComponent, ListComponent, ViewComponent, DetailsComponent, EditComponent, NavbarComponent, ViewNewsComponent, GlobalBpoViewComponent],
+                CareerComponent, ServiceComponent, NewsComponent, GalleryComponent, ContactComponent, GlobalbpoComponent, AboutComponent, ApplicationFormComponent, CareerViewListComponent, TeamComponent, VideoComponent, ContactCenterComponent, BackOfficeComponent, DigitalMarketingComponent, CreativeDesignComponent, AppDesignDevelopmentComponent, SkillsDevelopmentComponent, TowhidHossainComponent, JahangirHossainUzzalComponent, NurulIslamComponent, TariqulHasanComponent, ObaiduHaqueComponent, AtiaBilkisComponent, RashaduzammanRianComponent, TamannaSharkerComponent, CreateComponent, ListComponent, ViewComponent, DetailsComponent, EditComponent, NavbarComponent, ViewNewsComponent, GlobalBpoViewComponent, GalleryViewComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

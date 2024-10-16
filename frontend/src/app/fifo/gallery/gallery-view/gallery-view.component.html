@@ -1,0 +1,116 @@
+<div class="container my-5">
+  <!-- Title -->
+  <h1 class="fs-1 fw-bold text-dark mb-5">
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+  </h1>
+
+
+<div>
+  <img src="assets\photo\test.jpg" class="card-img-top custom-carousel-img" alt="test" />
+</div>
+
+
+  
+  <!-- Subtitle -->
+  <h3 class="fs-5 text-muted lh-sm my-3">
+    It is a long established fact that a reader will be distracted by the
+    readable content of a page when looking at its layout. The point of using
+    Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
+    opposed to using 'Content here, content here',
+  </h3>
+
+  <!-- error  -->
+  <!-- share in social media  -->
+  <div class="my-4 float-end">
+    <!-- <h5>Share this news:</h5> -->
+    <a
+      (click)="shareOnFacebook()"
+      class="me-3"
+      target="_blank"
+      title="Share on Facebook"
+    >
+      <i class="fa-brands fa-facebook-square fs-2 text-primary"></i>
+    </a>
+
+    <a
+      (click)="shareOnTwitter()"
+      class="me-3"
+      target="_blank"
+      title="Share on Twitter"
+    >
+      <i class="fa-brands fa-x-twitter fs-2 text-black"></i>
+    </a>
+
+    <a
+      (click)="shareOnLinkedIn()"
+      class="me-3"
+      target="_blank"
+      title="Share on LinkedIn"
+    >
+      <i class="fa-brands fa-linkedin fs-2 text-primary"></i>
+    </a>
+
+    <a (click)="printPage()" title="Print this page">
+      <i class="fa-solid fa-print fs-2 text-dark"></i>
+    </a>
+  </div>
+
+  <!-- Post Date with Icon -->
+  <p class="text-muted mt-3"><i class="fa-regular fa-clock"></i> Nov 9, 2024</p>
+
+  <hr />
+
+  <!-- Details -->
+  <div class="m-5">
+    <p>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s, when an unknown printer took a galley of type and scrambled it to
+      make a type specimen book. .....
+    </p>
+    <br />
+    <p>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s, when an unknown printer took a galley of type and scrambled it to
+      make a type specimen book.......
+    </p>
+    <br />
+    <p>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s, when an unknown printer took a galley of type and scrambled it to
+      make a type specimen book.......
+    </p>
+  </div>
+
+
+
+
+
+  
+<div class="row g-3">
+    <div class="col-md-6" *ngFor="let image of images"> <!-- Repeat for each image -->
+      <div class="card shadow-sm">
+        <!-- Image container with fixed aspect ratio -->
+        <div class="image-container position-relative">
+          <img src="assets/photo/gallery/{{image}}" class="card-img-top img-fluid w-100" alt="Image for Lorem Ipsum">
+          
+          <!-- Caption overlay -->
+          <div class="caption-overlay">
+            <p class="card-text text-white">Lorem Ipsum is simply dummy text</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+  

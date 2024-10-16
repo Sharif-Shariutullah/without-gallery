@@ -11,8 +11,6 @@ templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
 
-
-
   // Image and text animation data
   imagesAndText: { image: string; text: string }[] = [
     { image: 'assets/photo/offer/call.png', text: 'Call Center Services' },
@@ -22,6 +20,8 @@ export class HomeComponent implements OnInit {
     { image: 'assets/photo/offer/call-5.png', text: 'Back-Office Services' },
     { image: 'assets/photo/offer/call-7.png', text: 'Software Development' },
   ];
+
+
 
   currentImageAndText = this.imagesAndText[0];
   i: number = 0;

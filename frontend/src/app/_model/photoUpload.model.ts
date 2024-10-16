@@ -1,6 +1,8 @@
 export interface photoUploadModel{
 
-    galleryName: string,
-    galleryDetails: string,
-    // galleryImage:
+    title: string,
+    subtitle: string,
+    details: string,
+    captions: string[],
+    images: File[]
 } 

@@ -16,6 +16,14 @@ import { PracticeService } from 'src/app/Practice/service/practice.service';
 })
 export class GalleryComponent{
  
+// frontend ----------------------------------------
+
+routingViewPage(){
+
+  this.route.navigateByUrl('gallery-view');
+}
+
+
   
   // constructor(
   //   private router: Router,
@@ -69,7 +77,9 @@ export class GalleryComponent{
   constructor(
     private practiceService: PracticeService,
     private fb: FormBuilder,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+  private route : Router,
+  ) { }
 
   ngOnInit() {
     this.getAllPractice();

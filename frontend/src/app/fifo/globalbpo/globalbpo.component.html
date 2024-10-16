@@ -1,52 +1,34 @@
-
-
-
-
-
-  <div class="container mt-4">
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-
-      <div *ngFor="let bpo of globalBPOs; " class="col">
-
-        <div class="card h-100 shadow-sm p-3 bg-body rounded" (click)="getGlobalBPOById(bpo.id)">
-          <img src="assets/komola.jpg" class="card-img-top" alt="test">
-          <div class="card-body">
-            <div class="card-date text-muted small">
-              <i class="fa-regular fa-clock"></i> {{ bpo.postDate | date:'mediumDate' }}
-            </div>
+<div class="container mt-4">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div *ngFor="let bpo of globalBPOs" class="col">
+      <div
+        class="card h-100 shadow-sm p-3 bg-body rounded"
+        (click)="getGlobalBPOById(bpo.id)"
+      >
+        <img src="assets/komola.jpg" class="card-img-top" alt="test" />
+        <div class="card-body">
+          <div class="card-date text-muted small">
+            <i class="fa-regular fa-clock"></i>
+            {{ bpo.postDate | date : "mediumDate" }}
+          </div>
           <div class="font-weight-bold">
-            <h3 class="card-title bol ">{{ bpo.title  | titlecase }}</h3>
-
+            <h3 class="card-title bol">{{ bpo.title | titlecase }}</h3>
           </div>
 
-
-            <p class="card-text truncate-text">{{ bpo.subtitle }}</p>
-
-
-          </div>
-          <div class="card-footer">
-            <a type="submit" (click)="getGlobalBPOById(bpo.id)" class="btn btn-outline-primary w-100">View</a>
-          </div>
+          <p class="card-text truncate-text">{{ bpo.subtitle }}</p>
+        </div>
+        <div class="card-footer">
+          <a
+            type="submit"
+            (click)="getGlobalBPOById(bpo.id)"
+            class="btn btn-outline-primary w-100"
+            >View</a
+          >
         </div>
       </div>
     </div>
   </div>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
 
 
 
@@ -82,13 +64,8 @@
     </mat-grid-list>
 </div> -->
 
-
-
-
-
-
 <!-- practice  -->
- 
+
 <!-- 
 <div class="product-list">
 
@@ -120,16 +97,6 @@
         </div>
     </mat-card>
   </div> -->
-  
-  
-  
-
-
-
-
-
-
-
 
 <!-- video  -->
 <!-- <section >
@@ -137,5 +104,3 @@
     <h1 style=" font-size:xx-large ;" class="video-text" routerLink="/video" routerLinkActive="active"> Video</h1>
 </div>
 </section> -->
-
-

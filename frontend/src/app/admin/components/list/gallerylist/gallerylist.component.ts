@@ -23,8 +23,11 @@ export class GallerylistComponent implements OnInit {
 
   Object: photoUploadModel = {
 
-    galleryName: '',
-    galleryDetails: '',
+    title:'',
+    subtitle: '',
+    details: '',
+    captions: [],
+    images: []
 
     // galleryImage:
   };

@@ -10,13 +10,6 @@ export class PhotoUploadService {
 
   constructor(private httpClient: HttpClient) {}
 
-  // create 
-  public createGallery(photoUpMod: photoUploadModel) {
-    return this.httpClient.post<photoUploadModel>(
-      'http://localhost:8080/api/admin/postNewGallery',
-      photoUpMod
-    );
-  }
 
 
   // get/show 
@@ -51,39 +44,85 @@ export class PhotoUploadService {
 
 
   private uploadUrl = 'http://localhost:8080/api/admin/upload';  // Backend URL
+  private apiUrl = 'http://localhost:8080/api/admin/upload';  // Backend URL
 
 
 
 
-  // Method to upload gallery with images
-   uploadGallery(
-    title: string,
-    subtitle: string,
-    details: string,
-    captions: string[],
-    images: File[]
-  ): Observable<any> {
+  // Method to upload gallery with images-----------------previous
+  //  uploadGallery(
+  //   title: string,
+  //   subtitle: string,
+  //   details: string,
+  //   captions: string[],
+  //   images: File[]
+  // ): Observable<any> {
 
-    const formData: FormData = new FormData();
+  //   const formData: FormData = new FormData();
 
-    // Append fields to FormData
-    formData.append('title', title);
-    formData.append('subtitle', subtitle);
-    formData.append('details', details);
+  //   // Append fields to FormData
+  //   formData.append('title', title);
+  //   formData.append('subtitle', subtitle);
+  //   formData.append('details', details);
 
-    captions.forEach(caption => {
-      formData.append('captions', caption);
+  //   captions.forEach(caption => {
+  //     formData.append('captions', caption);
+  //   });
+
+  //   // Append multiple images
+  //   for (let i = 0; i < images.length; i++) {
+  //     formData.append('images', images[i]);
+  //   }
+
+  //   // Send POST request to backend
+  //   return this.httpClient.post(this.uploadUrl, formData);
+  // }
+
+
+
+
+
+
+  uploadGallery(data: FormData): Observable<any> {
+    return this.httpClient.post('http://localhost:8080/api/admin/upload', data, {
+      headers: {
+        // Note: Do not set 'Content-Type' header here, Angular will automatically set it for FormData
+      },
     });
+  }
+  
 
-    // Append multiple images
-    for (let i = 0; i < images.length; i++) {
-      formData.append('images', images[i]);
+
+
+
+
+
+
+
+  // testing -------------
+
+  // Create gallery with form data
+  public cretaGallery(photoUpMod: photoUploadModel): Observable<any> {
+    const formData = new FormData();
+
+    // Append text fields
+    formData.append('title', photoUpMod.title);
+    formData.append('subtitle', photoUpMod.subtitle);
+    formData.append('details', photoUpMod.details);
+    formData.append('captions', JSON.stringify(photoUpMod.captions)); // Converting captions array to a JSON string
+
+    // Append images
+    for (let i = 0; i < photoUpMod.images.length; i++) {
+      formData.append('images', photoUpMod.images[i], photoUpMod.images[i].name);
     }
 
-    // Send POST request to backend
-    return this.httpClient.post(this.uploadUrl, formData);
+    // Post the form data to the server
+    return this.httpClient.post(this.apiUrl, formData, {
+      headers: {
+        // Let Angular set the Content-Type for FormData
+      },
+    });
   }
-
 
   
 }
