@@ -244,3 +244,27 @@ body {
     margin-top: 15px; /* Optional margin to avoid overlap */
   }
 }
+
+
+@media (max-width: 576px) {
+  footer p {
+    font-size: 12px; /* Smaller font size on mobile */
+  }
+
+  footer ul i {
+    font-size: 20px; /* Optional: smaller icons on mobile */
+  }
+}
+
+@media (max-width: 576px) {
+  footer p {
+    font-size: 12px; /* Smaller font size on mobile */
+  }
+}
+
+
+@media (max-width: 576px) {
+  .email-text {
+    font-size: 12px; /* Smaller font size on mobile */
+  }
+}

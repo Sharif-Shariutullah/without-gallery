@@ -56,6 +56,7 @@ export class GlobalbpoComponent implements OnInit {
       next: (data) => {
         this.globalBPOs = data;
         this.handleImageData(); // Call to handle image data conversion
+     this.handleImageDataThumbnail();
       },
       error: (error) => {
         this.errorMessage = error; // Capture error for display
@@ -63,14 +64,34 @@ export class GlobalbpoComponent implements OnInit {
     });
   }
 
+
+
+
+
+  private handleImageDataThumbnail() {
+    this.globalBPOs.forEach(bpo => {
+      // Assuming the thumbnailImage is in a base64 format or needs conversion
+      bpo.thumbnailImage = 'data:image/jpeg;base64,' + bpo.thumbnailImage;
+    });
+  }
+  
+
   private handleImageData() {
     this.globalBPOs.forEach(bpo => {
+
       bpo.images.forEach(image => {
         // If your backend returns base64 directly, use it directly
         image.img = 'data:image/jpeg;base64,' + image.img; // Make sure to prepend the correct data URI scheme
       });
     });
   }
+
+
+
+
+
+
+
   
   // Helper function to convert Uint8Array to base64
   private arrayBufferToBase64(buffer: Uint8Array): string {

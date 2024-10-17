@@ -30,7 +30,7 @@
 }
 .title {
     font-size: 46px;
-    font-weight: bold;
+    // font-weight: bold;
     flex: 1 1 100%;
     // text-align: center;
     margin-bottom: 20px;
@@ -234,13 +234,13 @@ li {
   
 
 .resume-form-wrapper {
-  background-color: #0077b6;
+  background-color: #1B93D0;
   padding: 40px;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   margin: 30px auto;
   max-width: 600px;
-}
+  }
 
 .resume-form-wrapper h2 {
   text-align: center;
@@ -269,8 +269,7 @@ li {
 }
 
 .resume-btn-submit {
-  background-color: #0F5396
-  ;
+  background-color: #0F5396  ;
   color: #fff;
   padding: 10px 30px;
   border: none;
@@ -313,6 +312,6 @@ font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans
 
 
 
-.bg-contrast{
-  background-color: #00b4d8;
-  }
+// .bg-contrast{
+//   background-color: #00b4d8;
+//   }

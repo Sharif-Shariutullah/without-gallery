@@ -5,7 +5,14 @@
         class="card h-100 shadow-sm p-3 bg-body rounded"
         (click)="getGlobalBPOById(bpo.id)"
       >
-        <img src="assets/komola.jpg" class="card-img-top" alt="test" />
+        <!-- <img src="assets/komola.jpg" class="card-img-top" alt="test" /> -->
+        <img [src]="bpo.thumbnailImage" class="card-img-top" alt="Image for {{ bpo.thumbnailImage }}" />
+       
+       
+       
+       
+       
+       
         <div class="card-body">
           <div class="card-date text-muted small">
             <i class="fa-regular fa-clock"></i>

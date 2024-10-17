@@ -6,7 +6,12 @@
       <ul class="navbar-nav ">
         <li class="nav-item fs-6 ">
           <a href="mailto: info@fifo-tech.com" target="_blank" style="text-decoration: none; color: white; ">
-            <i class="fa-solid fa-envelope " style="color: #ffffff;"> </i> info&commat;wetechhub.com
+            <i class="fa-solid fa-envelope " style="color: #ffffff;"> </i> 
+            <span class="email-text"> 
+
+            info&commat;wetechhub.com
+
+            </span>
           </a>
         </li>
       </ul>
@@ -43,7 +48,7 @@
           <!-- linked in  -->
 
           <!-- <li class="nav-item">
-            <a href="https://bd.linkedin.com/company/fifotech" class="nav-link px-2 text-muted" target="_blank">
+            <a href="https://bd.linkedin.com/company/We Tech Hub" class="nav-link px-2 text-muted" target="_blank">
               <i class="fa-brands fa-linkedin" style="color: #fcfcfc; font-size: 24px;"></i>
             </a>
 
@@ -135,7 +140,7 @@
 
 <div *ngIf="isAdminLoggedIn">
   <mat-toolbar class="navbar nav-bg">
-    <span class="navbar-brand " mat-button routerLink="/home" routerLinkActive="active">FIFO Tech</span>
+    <span class="navbar-brand " mat-button routerLink="/home" routerLinkActive="active">We Tech Hub</span>
     <span class="spacer"></span>
 
     <button class="nav-taxt" style="color: white;" mat-button routerLink="/admin/createEverything"
@@ -174,7 +179,7 @@
 
 <div *ngIf="isCustomerLoggedIn">
   <mat-toolbar color="primary" class="navbar">
-    <span class="navbar-brand" mat-button routerLink="/home" routerLinkActive="active">FIFO Tech</span>
+    <span class="navbar-brand" mat-button routerLink="/home" routerLinkActive="active">We Tech Hub</span>
     <span class="spacer"></span>
 
     <button mat-button routerLink="/home" routerLinkActive="active">
@@ -320,35 +325,33 @@
 </footer>
 
 
-<!-- <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center"
-  style="background-color: #1B93D0;height: 50px"> -->
-<div class="d-flex justify-content-between align-items-center"  style="background-color: #1B93D0;height: 50px">
+<footer>
+  <div class="d-flex justify-content-between align-items-center" style="background-color: #1B93D0; height: auto; padding: 10px 0;">
+    <p class="text-white ms-5 mb-0 text-sm">&copy; 2024 | <b>WeTech Hub</b>. All rights reserved.</p>
 
-  <p class="text-white ms-5 mt-4">&copy; 2024 | <b>WeTech Hub</b>. All rights reserved.</p>
+    <!-- Icons are visible on screens larger than 576px, hidden on smaller screens -->
+    <ul class="list-unstyled d-flex me-5 mb-0 d-none d-sm-flex" style="list-style-type: none;">
+      <li class="ms-2">
+        <a href="https://www.facebook.com/WeTech.Hub.bd" class="nav-link px-2 text-muted" target="_blank">
+          <i class="fa-brands fa-facebook" style="color: #ffffff; font-size: 24px"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a aria-label="WhatsApp" href="https://wa.me/8801927666222" class="nav-link px-2 text-muted" target="_blank">
+          <i class="fa-brands fa-whatsapp" style="color:#ffffff; font-size: 24px;"></i>
+        </a>
+      </li>
+      <li class="ms-1">
+        <a href="https://www.youtube.com/@WeTechHubBD" class="nav-link px-2 text-muted" target="_blank">
+          <i class="fa-brands fa-youtube" style="color: #ffffff; font-size: 24px;"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>
 
-  <ul class="list-unstyled d-flex me-5 mt-4" style="list-style-type: none">
-    <li class="ms-2">
-      <a href="https://www.facebook.com/WeTech.Hub.bd" class="nav-link px-2 text-muted" target="_blank">
-        <i class="fa-brands fa-facebook" style="color: #ffffff; font-size: 24px"></i>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a aria-label="WhatsApp" href="https://wa.me/8801927666222" class="nav-link px-2 text-muted"
-        target="_blank">
-        <i class="fa-brands fa-whatsapp" style="color:#ffffff; font-size: 24px;"></i>
-      </a></li>
-    <li class="ms-1">
-      <a href="https://www.youtube.com/@WeTechHubBD" class="nav-link px-2 text-muted" target="_blank">
-        <i class="fa-brands fa-youtube" style="color: #ffffff; font-size: 24px"></i>
-      </a>
-    </li>
-<!--     
-    <li class="ms-1">
 
-    
-    </li> -->
-  </ul>
-</div>
+
 
 </div>
 

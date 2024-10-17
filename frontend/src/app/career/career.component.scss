@@ -169,11 +169,11 @@ color: #6c757d;
 }
 
 .job-meta i {
-color: #6c63ff;
+color: #1b93d0;
 }
 
 .apply-button {
-background-color: #3c52f3;
+background-color: #1b93d0;
 color: #fff;
 padding: 8px 16px;
 border: none;
@@ -189,14 +189,14 @@ font-weight: 300;
   line-height: 20px;
   fill: #FFFFFF;
   color: #FFFFFF;
-  background-color: #233AD6;
+  // background-color: #233AD6;
   border-radius: 9px 9px 9px 9px;
   padding: 10px 32px 10px 32px;
 
 }
 
 .apply-button:hover {
-background-color: #3243cc;
+background-color: #0F5396;
 }
 
 @media (max-width: 768px) {
@@ -206,10 +206,14 @@ background-color: #3243cc;
 }
 
 .apply-button {
-  margin-top: 10px;
+  // margin-top: 10px;
+
+  margin: 10px auto; /* Center horizontally */
+  display: block; /* Makes the button a block element */
   width: 40%;
   text-align: center;
-  // float: right;
+
+  
 }
 
 .job-meta {
@@ -345,13 +349,18 @@ font-size: 16px;
   text-decoration: none;
   line-height: 24px;
   color: #FFFFFF;
-  background-color: #0F5396;
+  background-color: #1B93D0;
   // border-color: #0d6efd
   border-width: 1px;
   border-radius: 9px;
   padding: 20px 30px 20px 30px;
+  
 }
 
+
+.explore-button:hover {
+  background-color: #0F5396;
+  }
 
 
 .resume-form-wrapper {
@@ -476,10 +485,22 @@ margin-bottom: 15px;
 
 .image-container {
   
-  justify-content: center; 
+  display: none;
+
  
 }
 
 
 }
 
+.openings {
+  background-color: #0f5396; 
+  font-weight: 600;
+  }
+
+
+
+.openings:hover {
+  background-color: #000000;
+  border: solid #0f5396; 
+  }

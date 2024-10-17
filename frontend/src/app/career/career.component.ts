@@ -14,6 +14,18 @@ import Swal from 'sweetalert2';
   styleUrls: ['./career.component.scss'],
 })
 export class CareerComponent implements OnInit {
+
+
+
+
+  routingViewPage(){
+
+    this.router.navigateByUrl('job-Details');
+  }
+
+// temoporary 
+
+
   scrollToSection() {
     const element = document.getElementById('jobDetails');
     if (element) {

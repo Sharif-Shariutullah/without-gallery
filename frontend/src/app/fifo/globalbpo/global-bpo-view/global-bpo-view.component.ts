@@ -6,35 +6,36 @@ import { GlobalBpoService } from 'src/app/_service/globalBpo/global-bpo.service'
 @Component({
   selector: 'app-global-bpo-view',
   templateUrl: './global-bpo-view.component.html',
-  styleUrls: ['./global-bpo-view.component.scss']
+  styleUrls: ['./global-bpo-view.component.scss'],
 })
-export class GlobalBpoViewComponent implements OnInit{
+export class GlobalBpoViewComponent implements OnInit {
 
-  
   constructor(
     private bpoService: GlobalBpoService,
-    private router : Router,
-    private route: ActivatedRoute,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
-  
 
-
-
-
-   // --------------------------frontend -------------------
-//  bpo: any;  
+  // --------------------------frontend -------------------
+  //  bpo: any;
 
   // Method to share on Facebook
   shareOnFacebook() {
-    const url = window.location.href;  // Current page URL
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+    const url = window.location.href; // Current page URL
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      url
+    )}`;
     window.open(facebookUrl, '_blank');
   }
 
   // Method to share on LinkedIn
   shareOnLinkedIn() {
     const url = window.location.href;
-    const linkedInUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}&title=${encodeURIComponent(this.bpo.title)}&summary=${encodeURIComponent(this.bpo.subtitle)}&source=LinkedIn`;
+    const linkedInUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
+      url
+    )}&title=${encodeURIComponent(this.bpo.title)}&summary=${encodeURIComponent(
+      this.bpo.subtitle
+    )}&source=LinkedIn`;
     window.open(linkedInUrl, '_blank');
   }
 
@@ -42,7 +43,9 @@ export class GlobalBpoViewComponent implements OnInit{
   shareOnTwitter() {
     const url = window.location.href;
     const text = `${this.bpo.title} - ${this.bpo.subtitle}`;
-    const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+    const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+      url
+    )}&text=${encodeURIComponent(text)}`;
     window.open(twitterUrl, '_blank');
   }
 
@@ -50,11 +53,6 @@ export class GlobalBpoViewComponent implements OnInit{
   printPage() {
     window.print();
   }
-
-
-
-
-
 
   isModalOpen = false;
   currentImage: string = '';
@@ -71,40 +69,32 @@ export class GlobalBpoViewComponent implements OnInit{
     this.currentImage = '';
   }
 
-
-
-
   // --------------------------Backend -------------------
 
   globalBPOs: globalBpoModel[] = [];
   errorMessage: string | null = null; // To hold any error messages
 
 
-  // ngOnInit(): void {
-  //   this.getAllGlobalBPOs();
-  // }
 
   getAllGlobalBPOs() {
     this.bpoService.getAllGlobalBPOs().subscribe({
       next: (data) => {
         this.globalBPOs = data;
         this.handleImageData(); // Call to handle image data conversion
+        this.handleImageDataThumbnail();
       },
       error: (error) => {
         this.errorMessage = error; // Capture error for display
-      }
+      },
     });
+
+    
   }
 
-  // private handleImageData() {
-  //   this.globalBPOs.forEach(bpo => {
-  //     bpo.images.forEach(image => {
-  //       // If your backend returns base64 directly, use it directly
-  //       image.img = 'data:image/jpeg;base64,' + image.img; // Make sure to prepend the correct data URI scheme
-  //     });
-  //   });
-  // }
-  
+
+
+
+
   // Helper function to convert Uint8Array to base64
   private arrayBufferToBase64(buffer: Uint8Array): string {
     let binary = '';
@@ -114,14 +104,10 @@ export class GlobalBpoViewComponent implements OnInit{
     }
     return window.btoa(binary); // Convert binary string to base64
   }
-  
 
   bpo: globalBpoModel | null = null;
-  // errorMessage: string | null = null;
 
-
-
-// ------------------------------------------------------new--------------------
+  // ------------------------------------------------------new--------------------
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -135,19 +121,37 @@ export class GlobalBpoViewComponent implements OnInit{
       next: (data) => {
         this.bpo = data;
         this.handleImageData(); // Convert image if needed
+        this.handleImageDataThumbnail();
       },
       error: (error) => {
         this.errorMessage = error;
-      }
+      },
     });
   }
 
+
+
+  // private handleImageDataThumbnail() {
+  //   this.globalBPOs.forEach(thumbBpo => {
+  //     // Assuming the thumbnailImage is in a base64 format or needs conversion
+  //     thumbBpo.thumbnailImage = 'data:image/jpeg;base64,' + thumbBpo.thumbnailImage;
+  //   });
+  // }
+  
+  private handleImageDataThumbnail() {
+    this.globalBPOs.forEach((bpo) => {
+      if (bpo.thumbnailImage && !bpo.thumbnailImage.startsWith('data:image')) {
+        bpo.thumbnailImage = 'data:image/jpeg;base64,' + bpo.thumbnailImage;
+      }
+    });
+  }
+  
+
   private handleImageData() {
     if (this.bpo && this.bpo.images) {
-      this.bpo.images.forEach(image => {
+      this.bpo.images.forEach((image) => {
         image.img = 'data:image/jpeg;base64,' + image.img; // Ensure correct data URI scheme
       });
     }
   }
-
 }
