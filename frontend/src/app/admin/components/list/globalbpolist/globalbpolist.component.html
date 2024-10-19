@@ -50,7 +50,7 @@
               <div class="image-list">
                 <div *ngFor="let image of bpo.images; let i = index" class="image-item">
                   <img [src]="image.img" alt="{{ image.caption }}" class="bpo-image" (click)="openModal(image.img)" />
-                  <p class="image-caption">{{ image.caption }}</p>
+                  <!-- <p class="image-caption">{{ image.caption }}</p> -->
   
                 </div>
               </div>

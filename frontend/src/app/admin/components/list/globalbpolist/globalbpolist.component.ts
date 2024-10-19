@@ -7,21 +7,20 @@ import { GlobalBpoService } from 'src/app/_service/globalBpo/global-bpo.service'
 @Component({
   selector: 'app-globalbpolist',
   templateUrl: './globalbpolist.component.html',
-  styleUrls: ['./globalbpolist.component.scss']
+  styleUrls: ['./globalbpolist.component.scss'],
 })
-
 export class GlobalbpolistComponent implements OnInit {
+
   
   constructor(private bpoService: GlobalBpoService) {}
-  
-    // --------------------------frontend -------------------
 
-  
+  // --------------------------frontend -------------------
+
   isModalOpen = false;
   currentImage: string;
-  
-   // Method to open the modal with the clicked image
-   openModal(imageSrc: string): void {
+
+  // Method to open the modal with the clicked image
+  openModal(imageSrc: string): void {
     this.currentImage = imageSrc;
     this.isModalOpen = true;
   }
@@ -32,12 +31,10 @@ export class GlobalbpolistComponent implements OnInit {
     this.currentImage = '';
   }
 
-
   // --------------------------Backend -------------------
 
   globalBPOs: globalBpoModel[] = [];
   errorMessage: string | null = null; // To hold any error messages
-
 
   ngOnInit(): void {
     this.getAllGlobalBPOs();
@@ -51,7 +48,7 @@ export class GlobalbpolistComponent implements OnInit {
       },
       error: (error) => {
         this.errorMessage = error; // Capture error for display
-      }
+      },
     });
   }
 
@@ -63,27 +60,20 @@ export class GlobalbpolistComponent implements OnInit {
   //     });
   //   });
   // }
-  
 
   private handleImageData() {
-    this.globalBPOs.forEach(bpo => {
+    this.globalBPOs.forEach((bpo) => {
       // Convert thumbnail image to base64
       if (bpo.thumbnailImage) {
         bpo.thumbnailImage = 'data:image/jpeg;base64,' + bpo.thumbnailImage;
       }
 
       // Handle other images similarly
-      bpo.images.forEach(image => {
+      bpo.images.forEach((image) => {
         image.img = 'data:image/jpeg;base64,' + image.img;
       });
     });
   }
-
-
-
-
-
-
 
   // Helper function to convert Uint8Array to base64
   private arrayBufferToBase64(buffer: Uint8Array): string {
@@ -94,46 +84,17 @@ export class GlobalbpolistComponent implements OnInit {
     }
     return window.btoa(binary); // Convert binary string to base64
   }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   deleteButton(id: number): void {
     this.bpoService.deleteGlobalBPO(id).subscribe(
-      (response) => { 
-        console.log(response); 
+      (response) => {
+        console.log(response);
         // this.loadPosts(); // Refresh the list after deletion
         this.getAllGlobalBPOs(); // Refresh the list after deletion
       },
-      (error: HttpErrorResponse) => { 
-        console.log(error); 
+      (error: HttpErrorResponse) => {
+        console.log(error);
       }
     );
   }
-
-
-
-
-
-
 }

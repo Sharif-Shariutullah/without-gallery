@@ -1,6 +1,6 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, NgForm } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { photoUploadModel } from 'src/app/_model/photoUpload.model';
@@ -13,133 +13,195 @@ import Swal from 'sweetalert2';
   styleUrls: ['./photoupload.component.scss'],
 })
 export class PhotouploadComponent {
-  @ViewChild('galleryForm') galleryForm!: NgForm; // Reference the form template
+ 
 
   constructor(
-    private router: Router,
-    private serviceClass: PhotoUploadService
-  ) {}
+    private service: PhotoUploadService,
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router
+  ) {
+    this.imageFormArray = this.fb.array([]);
+    this.postForm = this.fb.group({
+      title: [''],
+      subtitle: [''],
+      postDate: [''],
+      details: [''],
+      images: this.imageFormArray, // Handle multiple images with captions
+      thumbnailImage: [''], // Add thumbnail image control
 
-  title: string = '';
-  subtitle: string = '';
-  details: string = '';
-  captions: string[] = [];
-  images: File[] = [];
-  imagePreviews: string[] = []; // To store the image preview URLs
+    });
+  }
 
-  uploadGallery(): void {
+
+// ---------------------------------------------------------------Frontend --------------------------------------------------------------- 
+
+  postForm: FormGroup;
+  imageFormArray: FormArray;
+  selectedFiles: File[] = [];
+  imagePreviews: string[] = []; // For storing image previews
+  thumbnailFile: File | null = null; // For storing the selected thumbnail image
+  thumbnailPreview: string | null = null; // For storing the thumbnail preview
+
+
+
+
+  // Add image group
+  addImage() {
+    const imageGroup = this.fb.group({
+      caption: [''],
+      previewUrl: [''] // Store preview URL here
+    });
+    this.imageFormArray.push(imageGroup); // Add new image and caption field
+  }
+
+
+
+
+  // Handle file selection for thumbnail
+  handleThumbnailSelection(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.thumbnailFile = file;
+
+      // Generate thumbnail preview
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.thumbnailPreview = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+  // File selection with preview (called on file input or drop)
+  handleFileSelection(file: File, index: number) {
+    this.selectedFiles[index] = file;
+
+    // Generate image preview
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.imageFormArray.at(index).patchValue({
+        previewUrl: e.target.result // Update preview URL
+      });
+    };
+    reader.readAsDataURL(file); // Read the image file
+  }
+
+  // Handle file input change event
+  onFileSelected(event: any, index: number) {
+    const file = event.target.files[0];
+    if (file) {
+      this.handleFileSelection(file, index);
+    }
+  }
+
+  // Handle drag-and-drop event
+  onFileDrop(event: any, index: number) {
+    event.preventDefault();
+    const file = event.dataTransfer.files[0];
+    if (file) {
+      this.handleFileSelection(file, index);
+    }
+  }
+
+  // Prevent default behavior on drag over to allow dropping
+  onDragOver(event: any) {
+    event.preventDefault();
+  }
+
+  // Remove image and caption
+  removeImage(index: number) {
+    this.imageFormArray.removeAt(index); // Remove from form
+    this.selectedFiles.splice(index, 1); // Remove from selected files
+  }
+
+
+
+
+// ---------------------------------------------------------------Backend --------------------------------------------------------------- 
+
+
+
+
+
+  // Submit form data
+  uploadGallery() {
     const formData = new FormData();
-
-    // Append non-file fields
-    formData.append('title', this.title);
-    formData.append('subtitle', this.subtitle);
-    formData.append('details', this.details);
-    formData.append('captions', JSON.stringify(this.captions)); // Convert array to string
+    
+    // Append form data fields
+    formData.append('title', this.postForm.get('title').value);
+    formData.append('subtitle', this.postForm.get('subtitle').value);
+    formData.append('postDate', this.postForm.get('postDate').value);
+    formData.append('details', this.postForm.get('details').value);
+    
+    // Captions array
+    const captions = this.imageFormArray.value.map((image) => image.caption);
+    
+    // Append captions
+    captions.forEach((caption, index) => {
+        console.log(`Appending caption ${index + 1}:`, caption); // Debugging caption
+        formData.append(`captions`, caption);
+    });
 
     // Append images
-    for (let i = 0; i < this.images.length; i++) {
-      formData.append('images', this.images[i], this.images[i].name);
+    this.selectedFiles.forEach((file, index) => {
+        console.log(`Appending image ${index + 1}:`, file.name); // Debugging file name
+        formData.append('images', file);
+    });
+
+
+
+
+    if (this.thumbnailFile) {
+      formData.append('thumbnailImage', this.thumbnailFile); // Add thumbnail image
     }
 
-    this.serviceClass.uploadGallery(formData).subscribe(
-      (response) => {
-        console.log('Gallery uploaded successfully:', response);
 
-        Swal.fire({
-          icon: 'success',
-          title: 'Done',
-          text: 'Photo Upload Successfully',
-          showConfirmButton: false,
-          timer: 2500,
-        }).then(() => {
-          // Reset form fields and form state
-          this.galleryForm.reset(); // This resets the form
-          this.galleryForm.resetForm(); // Reset the form validation state if needed
 
-          // Clear other component properties
-          this.captions = [];
-          this.images = [];
-          this.imagePreviews = [];
 
-          location.reload();
-        });
-      },
-      (error) => {
-        console.error('Error uploading gallery:', error);
+    // Check the final formData keys and values (for debugging)
+    formData.forEach((value, key) => {
+        console.log(`Key: ${key}, Value:`, value);
+    });
 
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong!',
-        });
-      }
-    );
-  }
+    // Send data to the backend
+    this.http.post('http://localhost:8080/api/admin/createGallery', formData)
+      .subscribe(
+        (response) => {
+          console.log('Photo created successfully:', response);
 
-  onCaptionsChange(event: Event): void {
-    const inputElement = event.target as HTMLInputElement; // Cast to HTMLInputElement
-    this.captions = inputElement.value.split(',');
-  }
+          Swal.fire({
+            icon: 'success',
+            title: 'Done',
+            text: 'Gallery Created Successfully',
+            showConfirmButton: false,
+            timer: 2500,
+          });
 
-  // _______________________FRONTEND______________________-
+          this.router.navigateByUrl('galleryList');
+        },
+        (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong! Please try again later.',
+          });
 
-  // drag and drop
-
-  dragging: boolean = false;
-
-  onDragOver(event: DragEvent) {
-    event.preventDefault();
-    this.dragging = true;
-  }
-
-  onDragLeave(event: DragEvent) {
-    this.dragging = false;
-  }
-
-  onDrop(event: DragEvent) {
-    event.preventDefault();
-    this.dragging = false;
-
-    if (event.dataTransfer?.files) {
-      this.images = Array.from(event.dataTransfer.files);
-
-      // Preview the images
-      this.imagePreviews = [];
-      for (let i = 0; i < this.images.length; i++) {
-        const reader = new FileReader();
-        reader.onload = (e: any) => {
-          this.imagePreviews.push(e.target.result);
-        };
-        reader.readAsDataURL(this.images[i]);
-      }
-    }
-  }
-
-  // Method to remove selected image
-  removeImage(index: number): void {
-    this.imagePreviews.splice(index, 1);
-    this.images.splice(index, 1);
-  }
-
-  // Method to handle file selection and generate previews
-  onFileChange(event: any): void {
-    if (event.target.files && event.target.files.length) {
-      this.images = event.target.files;
-      this.imagePreviews = []; // Clear previous previews
-
-      // Loop through the selected files
-      for (let i = 0; i < this.images.length; i++) {
-        const reader = new FileReader();
-
-        // Closure to capture the file information
-        reader.onload = (e: any) => {
-          // Push the file's data URL (base64-encoded image) to previews array
-          this.imagePreviews.push(e.target.result);
-        };
-
-        // Read the file as a Data URL (base64 encoded string)
-        reader.readAsDataURL(this.images[i]);
-      }
-    }
-  }
+          console.error('Error uploading GlobalBPO:', error);
+        }
+      );
 }
+
+}
+
+

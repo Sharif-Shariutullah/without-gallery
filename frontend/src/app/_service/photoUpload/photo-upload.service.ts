@@ -1,128 +1,56 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { photoUploadModel } from 'src/app/_model/photoUpload.model';
+import { catchError, Observable, throwError } from 'rxjs';
+
+export interface photoUploadModel {
+  id: number;
+  title: string;
+  subtitle: string;
+  postDate: string; // or Date depending on your handling
+  details: string;
+  images: ImageGallery[];
+  thumbnailImage: string; // New thumbnail field to hold the base64 image data
+}
+
+interface ImageGallery {
+  img: string; // or any appropriate type depending on your image handling
+  // img: Uint8Array; // Change to Uint8Array if you're treating it as byte data
+  caption: string;
+}
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PhotoUploadService {
+  constructor(private http: HttpClient) {}
+  private baseUrl = 'http://localhost:8080/api/admin'; // Adjust base URL if needed
 
-  constructor(private httpClient: HttpClient) {}
+  uploadGallery(formData: FormData): Observable<any> {
+    return this.http.post(`${this.baseUrl}/createGallery`, formData);
+  }
 
+  getAllGallery(): Observable<photoUploadModel[]> {
+    return this.http.get<photoUploadModel[]>(`${this.baseUrl}/getAllGallery`)
+      .pipe(
+        catchError(this.handleError) // Handle any errors here
+      );
+  }
 
+  private handleError(error: HttpErrorResponse) {
+    // Log the error or display a user-friendly message
+    console.error('An error occurred:', error);
+    return throwError('Something went wrong; please try again later.');
+  }
 
-  // get/show 
-  public getAllGallery() {
-    return this.httpClient.get<photoUploadModel[]>(
-      'http://localhost:8080/api/admin/getAllGallery'
+  deleteGallery(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/deleteGallery/${id}`);
+  }
+
+  // edit
+  public getGalleryById(id: number): Observable<photoUploadModel> {
+    return this.http.get<photoUploadModel>(
+      `http://localhost:8080/api/admin/getGalleryById/${id}`
     );
+    // return this.httpClient.get<globalBpoModel>("http://localhost:8080/api/getGlobalBPOById/"+id));
   }
-
-  //delete 
-  public deleteGallery(id: number) {
-    return this.httpClient.delete(
-      `http://localhost:8080/api/admin/deleteGallery/${id}`
-    );
-    // return this.httpClient.delete("http://localhost:8080/api/admin/deleteGallery/"+id);
-  }
-
-
-
-
-  
-  // edit 
-  public getGalleryById(id) {
-    return this.httpClient.get<photoUploadModel>(
-      `http://localhost:8080/api/getGalleryById/${id}`
-    );
-    // return this.httpClient.get<photoUploadModel>("http://localhost:8080/api/getGalleryById/"+id));
-  }
-
-
-
-
-
-  private uploadUrl = 'http://localhost:8080/api/admin/upload';  // Backend URL
-  private apiUrl = 'http://localhost:8080/api/admin/upload';  // Backend URL
-
-
-
-
-  // Method to upload gallery with images-----------------previous
-  //  uploadGallery(
-  //   title: string,
-  //   subtitle: string,
-  //   details: string,
-  //   captions: string[],
-  //   images: File[]
-  // ): Observable<any> {
-
-  //   const formData: FormData = new FormData();
-
-  //   // Append fields to FormData
-  //   formData.append('title', title);
-  //   formData.append('subtitle', subtitle);
-  //   formData.append('details', details);
-
-  //   captions.forEach(caption => {
-  //     formData.append('captions', caption);
-  //   });
-
-  //   // Append multiple images
-  //   for (let i = 0; i < images.length; i++) {
-  //     formData.append('images', images[i]);
-  //   }
-
-  //   // Send POST request to backend
-  //   return this.httpClient.post(this.uploadUrl, formData);
-  // }
-
-
-
-
-
-
-  uploadGallery(data: FormData): Observable<any> {
-    return this.httpClient.post('http://localhost:8080/api/admin/upload', data, {
-      headers: {
-        // Note: Do not set 'Content-Type' header here, Angular will automatically set it for FormData
-      },
-    });
-  }
-  
-
-
-
-
-
-
-
-
-  // testing -------------
-
-  // Create gallery with form data
-  public cretaGallery(photoUpMod: photoUploadModel): Observable<any> {
-    const formData = new FormData();
-
-    // Append text fields
-    formData.append('title', photoUpMod.title);
-    formData.append('subtitle', photoUpMod.subtitle);
-    formData.append('details', photoUpMod.details);
-    formData.append('captions', JSON.stringify(photoUpMod.captions)); // Converting captions array to a JSON string
-
-    // Append images
-    for (let i = 0; i < photoUpMod.images.length; i++) {
-      formData.append('images', photoUpMod.images[i], photoUpMod.images[i].name);
-    }
-
-    // Post the form data to the server
-    return this.httpClient.post(this.apiUrl, formData, {
-      headers: {
-        // Let Angular set the Content-Type for FormData
-      },
-    });
-  }
-
-  
 }

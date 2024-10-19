@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { globalBpoModel } from 'src/app/_model/globalBpo.model';
+import { photoUploadModel } from 'src/app/_model/photoUpload.model';
 import { GlobalBpoService } from 'src/app/_service/globalBpo/global-bpo.service';
+import { PhotoUploadService } from 'src/app/_service/photoUpload/photo-upload.service';
 
 @Component({
   selector: 'app-gallery-view',
@@ -11,70 +13,32 @@ import { GlobalBpoService } from 'src/app/_service/globalBpo/global-bpo.service'
 export class GalleryViewComponent implements OnInit{
 
 
-
-  // images = [
-  //   'assets\photo\gallery\callcenter7.jpeg',  // Add the image names or paths here
-  //   'assets\photo\gallery\callcenter1.jpeg',  // Add the image names or paths here
-  //   'assets\photo\gallery\callcenter5.jpeg',  // Add the image names or paths here
-  //   'assets\photo\gallery\callcenter6.jpeg',  // Add the image names or paths here
-  //   'assets\photo\gallery\callcenter10.jpeg',  // Add the image names or paths here
-  //   'assets\photo\gallery\callcenter3.jpeg',  // Add the image names or paths here
-  //   'assets\photo\gallery\callcenter8.jpeg',  // Add the image names or paths here
-    
-  // ];
-
-
-
-  images = [
-    'callcenter7.jpeg',  // Add the image names or paths here
-    'callcenter8.jpeg',
-    'callcenter9.jpeg',
-    'callcenter10.jpeg',
-    'callcenter11.jpeg',
-    'callcenter6.jpeg'
-  ];
-  
-
-
-
-
-
-// temporary---------------
-
-
-
-
-
-
-
-
-
-
-
   constructor(
-    private bpoService: GlobalBpoService,
-    private router : Router,
-    private route: ActivatedRoute,
+    private service: PhotoUploadService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
-  
 
-
-
-
-   // --------------------------frontend -------------------
-//  bpo: any;  
+  // --------------------------frontend -------------------
+  //  bpo: any;
 
   // Method to share on Facebook
   shareOnFacebook() {
-    const url = window.location.href;  // Current page URL
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+    const url = window.location.href; // Current page URL
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      url
+    )}`;
     window.open(facebookUrl, '_blank');
   }
 
   // Method to share on LinkedIn
   shareOnLinkedIn() {
     const url = window.location.href;
-    const linkedInUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}&title=${encodeURIComponent(this.bpo.title)}&summary=${encodeURIComponent(this.bpo.subtitle)}&source=LinkedIn`;
+    const linkedInUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
+      url
+    )}&title=${encodeURIComponent(this.bpo.title)}&summary=${encodeURIComponent(
+      this.bpo.subtitle
+    )}&source=LinkedIn`;
     window.open(linkedInUrl, '_blank');
   }
 
@@ -82,7 +46,9 @@ export class GalleryViewComponent implements OnInit{
   shareOnTwitter() {
     const url = window.location.href;
     const text = `${this.bpo.title} - ${this.bpo.subtitle}`;
-    const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+    const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+      url
+    )}&text=${encodeURIComponent(text)}`;
     window.open(twitterUrl, '_blank');
   }
 
@@ -91,19 +57,14 @@ export class GalleryViewComponent implements OnInit{
     window.print();
   }
 
-
-
-
-
-
   isModalOpen = false;
   currentImage: string = '';
 
   // Method to open the modal with the clicked image
-  // openModal(imageSrc: string): void {
-  //   this.currentImage = imageSrc;
-  //   this.isModalOpen = true;
-  // }
+  openModal(imageSrc: string): void {
+    this.currentImage = imageSrc;
+    this.isModalOpen = true;
+  }
 
   // Method to close the modal
   closeModal(): void {
@@ -111,40 +72,32 @@ export class GalleryViewComponent implements OnInit{
     this.currentImage = '';
   }
 
-
-
-
   // --------------------------Backend -------------------
 
   globalBPOs: globalBpoModel[] = [];
   errorMessage: string | null = null; // To hold any error messages
 
 
-  // ngOnInit(): void {
-  //   this.getAllGlobalBPOs();
-  // }
 
-  getAllGlobalBPOs() {
-    this.bpoService.getAllGlobalBPOs().subscribe({
+  getAllGallery() {
+    this.service.getAllGallery().subscribe({
       next: (data) => {
         this.globalBPOs = data;
         this.handleImageData(); // Call to handle image data conversion
+        this.handleImageDataThumbnail();
       },
       error: (error) => {
         this.errorMessage = error; // Capture error for display
-      }
+      },
     });
+
+    
   }
 
-  // private handleImageData() {
-  //   this.globalBPOs.forEach(bpo => {
-  //     bpo.images.forEach(image => {
-  //       // If your backend returns base64 directly, use it directly
-  //       image.img = 'data:image/jpeg;base64,' + image.img; // Make sure to prepend the correct data URI scheme
-  //     });
-  //   });
-  // }
-  
+
+
+
+
   // Helper function to convert Uint8Array to base64
   private arrayBufferToBase64(buffer: Uint8Array): string {
     let binary = '';
@@ -154,37 +107,52 @@ export class GalleryViewComponent implements OnInit{
     }
     return window.btoa(binary); // Convert binary string to base64
   }
-  
 
-  bpo: globalBpoModel | null = null;
-  // errorMessage: string | null = null;
+  bpo: photoUploadModel | null = null;
 
-
-
-// ------------------------------------------------------new--------------------
+  // ------------------------------------------------------new--------------------
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.getGlobalBPOById(+id); // Convert ID to a number
+      this.getGalleryById(+id); // Convert ID to a number
     }
   }
 
-  getGlobalBPOById(id: number): void {
-    this.bpoService.getGlobalBPOById(id).subscribe({
+  getGalleryById(id: number): void {
+    this.service.getGalleryById(id).subscribe({
       next: (data) => {
         this.bpo = data;
         this.handleImageData(); // Convert image if needed
+        this.handleImageDataThumbnail();
       },
       error: (error) => {
         this.errorMessage = error;
-      }
+      },
     });
   }
 
+
+
+  // private handleImageDataThumbnail() {
+  //   this.globalBPOs.forEach(thumbBpo => {
+  //     // Assuming the thumbnailImage is in a base64 format or needs conversion
+  //     thumbBpo.thumbnailImage = 'data:image/jpeg;base64,' + thumbBpo.thumbnailImage;
+  //   });
+  // }
+  
+  private handleImageDataThumbnail() {
+    this.globalBPOs.forEach((bpo) => {
+      if (bpo.thumbnailImage && !bpo.thumbnailImage.startsWith('data:image')) {
+        bpo.thumbnailImage = 'data:image/jpeg;base64,' + bpo.thumbnailImage;
+      }
+    });
+  }
+  
+
   private handleImageData() {
     if (this.bpo && this.bpo.images) {
-      this.bpo.images.forEach(image => {
+      this.bpo.images.forEach((image) => {
         image.img = 'data:image/jpeg;base64,' + image.img; // Ensure correct data URI scheme
       });
     }

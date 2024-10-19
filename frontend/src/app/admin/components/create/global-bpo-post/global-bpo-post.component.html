@@ -1,77 +1,58 @@
-
-
-
-
 <!-- Bluish Professional Form -->
 <div class="container mt-5">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <!-- Large Form Title -->
   <h1 class="text-center mb-4 text-primary">
     <i class="fas fa-pencil-alt"></i> Create a New Post
   </h1>
 
-  <form [formGroup]="postForm" (ngSubmit)="submitPost()" class="p-4 border rounded shadow-sm" style="background-color: #f0f8ff;">
-    
-    
-    
-    
-<!-- Thumbnail Image Upload -->
-<div class="form-group">
-  <label for="thumbnailImage">
-    <i class="fas fa-image text-primary"></i> Thumbnail Image
-  </label>
-  <div class="drag-drop-area p-3 border rounded text-center" 
-       style="background-color: #fdfdfd; cursor: pointer;">
-    <i class="fas fa-cloud-upload-alt fa-3x text-primary mb-2"></i>
-   
-    <p>Drag & Drop to upload or</p>
-    <p style="font-weight: bold;">Only Horizontal Photo</p>
-    <input
-      type="file"
-      class="form-control-file d-none"
-      id="thumbnailImage"
-      (change)="handleThumbnailSelection($event)"
-    />
-    <label for="thumbnailImage" class="btn btn-outline-primary">Choose Thumbnail</label>
-  </div>
+  <form
+    [formGroup]="postForm"
+    (ngSubmit)="submitPost()"
+    class="p-4 border rounded shadow-sm"
+    style="background-color: #f0f8ff"
+  >
+    <!-- Thumbnail Image Upload -->
+    <div class="form-group">
+      <label for="thumbnailImage">
+        <i class="fas fa-image text-primary"></i> Thumbnail Image
+      </label>
+      <div
+        class="drag-drop-area p-3 border rounded text-center"
+        style="background-color: #fdfdfd; cursor: pointer"
+      >
+        <i class="fas fa-cloud-upload-alt fa-3x text-primary mb-2"></i>
 
-  <!-- Thumbnail Preview -->
-  <div *ngIf="thumbnailPreview" class="mt-2">
-    <img [src]="thumbnailPreview" alt="Thumbnail Preview" class="img-thumbnail" width="200" />
-  </div>
-</div>
+        <p>Drag & Drop to upload or</p>
+        <p style="font-weight: bold">Only Horizontal Photo</p>
+        <input
+          type="file"
+          class="form-control-file d-none"
+          id="thumbnailImage"
+          (change)="handleThumbnailSelection($event)"
+        />
+        <label for="thumbnailImage" class="btn btn-outline-primary"
+          >Choose Thumbnail</label
+        >
+      </div>
 
-<!-- The rest of the form (title, subtitle, postDate, details, images) remains the same -->
+      <!-- Thumbnail Preview -->
+      <div *ngIf="thumbnailPreview" class="mt-2">
+        <img
+          [src]="thumbnailPreview"
+          alt="Thumbnail Preview"
+          class="img-thumbnail"
+          width="200"
+        />
+      </div>
+    </div>
 
+    <!-- The rest of the form (title, subtitle, postDate, details, images) remains the same -->
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <!-- Title Field -->
     <div class="form-group">
-      <label for="title"><i class="fas fa-heading text-primary"></i> Title</label>
+      <label for="title"
+        ><i class="fas fa-heading text-primary"></i> Title</label
+      >
       <input
         id="title"
         class="form-control"
@@ -84,7 +65,9 @@
 
     <!-- Subtitle Field -->
     <div class="form-group">
-      <label for="subtitle"><i class="fas fa-subscript text-primary"></i> Subtitle</label>
+      <label for="subtitle"
+        ><i class="fas fa-subscript text-primary"></i> Subtitle</label
+      >
       <input
         id="subtitle"
         class="form-control"
@@ -97,7 +80,9 @@
 
     <!-- Post Date Field -->
     <div class="form-group">
-      <label for="postDate"><i class="fas fa-calendar-alt text-primary"></i> Post Date</label>
+      <label for="postDate"
+        ><i class="fas fa-calendar-alt text-primary"></i> Post Date</label
+      >
       <input
         id="postDate"
         class="form-control"
@@ -109,7 +94,9 @@
 
     <!-- Details Field -->
     <div class="form-group">
-      <label for="details"><i class="fas fa-info-circle text-primary"></i> Details</label>
+      <label for="details"
+        ><i class="fas fa-info-circle text-primary"></i> Details</label
+      >
       <textarea
         id="details"
         class="form-control"
@@ -121,15 +108,20 @@
     </div>
 
     <!-- Image and Caption Fields (Dynamic) -->
-    <div *ngFor="let image of imageFormArray.controls; let i = index" class="form-group">
-      <label class="py-3 px-3"><i class="fas fa-image text-primary"></i> Image {{ i + 1 }}</label>
+    <div
+      *ngFor="let image of imageFormArray.controls; let i = index"
+      class="form-group"
+    >
+      <label class="py-3 px-3"
+        ><i class="fas fa-image text-primary"></i> Image {{ i + 1 }}</label
+      >
 
       <!-- Drag-and-Drop Area -->
-      <div 
-        class="drag-drop-area p-3 border rounded text-center" 
-        (drop)="onFileDrop($event, i)" 
+      <div
+        class="drag-drop-area p-3 border rounded text-center"
+        (drop)="onFileDrop($event, i)"
         (dragover)="onDragOver($event)"
-        style="background-color: #e6f7ff; cursor: pointer;"
+        style="background-color: #e6f7ff; cursor: pointer"
       >
         <i class="fas fa-cloud-upload-alt fa-3x text-primary mb-2"></i>
         <p>Drag & Drop to upload or</p>
@@ -139,20 +131,23 @@
           id="image{{ i }}"
           (change)="onFileSelected($event, i)"
         />
-        <label for="image{{ i }}" class="btn btn-outline-primary">Choose File</label>
+        <label for="image{{ i }}" class="btn btn-outline-primary"
+          >Choose File</label
+        >
       </div>
 
       <!-- Image Preview -->
       <div *ngIf="image.get('previewUrl').value" class="mt-2">
-        <img [src]="image.get('previewUrl').value" alt="Preview" class="img-thumbnail" width="200" />
+        <img
+          [src]="image.get('previewUrl').value"
+          alt="Preview"
+          class="img-thumbnail"
+          width="200"
+        />
       </div>
 
-
-
-
-      
       <!-- Caption Input -->
-      <label for="caption{{ i }}">
+      <!-- <label for="caption{{ i }}">
         <i class="fas fa-comment-alt text-primary"></i> Caption {{ i + 1 }}
       </label>
       <input
@@ -161,23 +156,24 @@
         formControlName="caption"
         type="text"
         placeholder="Enter image caption"
-      />
-
-
-
-
-
-
-
+      /> -->
 
       <!-- Remove Button -->
-      <button type="button" class="btn btn-danger btn-sm mt-2 float-end" (click)="removeImage(i)">
-        <i class="fas fa-trash-alt"></i> 
+      <button
+        type="button"
+        class="btn btn-danger btn-sm mt-2 float-end"
+        (click)="removeImage(i)"
+      >
+        <i class="fas fa-trash-alt"></i>
       </button>
     </div>
 
     <!-- Add Image Button -->
-    <button type="button" class="btn btn-outline-primary btn-sm mb-3" (click)="addImage()">
+    <button
+      type="button"
+      class="btn btn-outline-primary btn-sm mb-3"
+      (click)="addImage()"
+    >
       <i class="fas fa-plus"></i> Add Image
     </button>
 
@@ -187,32 +183,3 @@
     </button>
   </form>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -3,6 +3,26 @@ import { Router } from '@angular/router';
 import { FileEntity } from 'src/app/_model/FileEntity.model';
 import { FileUploadService } from 'src/app/_service/file-upload.service';
 
+document.addEventListener("DOMContentLoaded", function() {
+  const missionVisionSections = document.querySelectorAll('.mission-vision');
+
+  const isInView = (element) => {
+    const rect = element.getBoundingClientRect();
+    return rect.top < window.innerHeight && rect.bottom >= 0;
+  };
+
+  const checkScroll = () => {
+    missionVisionSections.forEach((section) => {
+      if (isInView(section)) {
+        section.classList.add('in-view'); // Add class when in view
+      }
+    });
+  };
+
+  window.addEventListener('scroll', checkScroll);
+  checkScroll(); // Initial check if sections are in view on load
+});
+
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -27,6 +47,9 @@ readMore = false; // Initially, the "Read More" content is hidden
   toggleReadMore2() {
     this.readMore2 = !this.readMore2; // Toggle between true and false
   }
+
+
+  
 
 
 

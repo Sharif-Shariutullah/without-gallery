@@ -1,98 +1,33 @@
-
-
-
-
-
-
 <div class="container mt-4">
   <div class="row row-cols-1 row-cols-md-3 g-4">
-
-
-
-    <div class="col">
+    <div *ngFor="let bpo of gallery" class="col">
       <div
         class="card h-100 shadow-sm p-3 bg-body rounded"
-        (click)="routingViewPage()"
+        (click)="getGalleryById(bpo.id)"
       >
-
-
-        <img src="assets\photo\gallery\callcenter7.jpeg" class="card-img-top" alt="test" />
+        <!-- <img src="assets/komola.jpg" class="card-img-top" alt="test" /> -->
+        <img [src]="bpo.thumbnailImage" class="card-img-top" alt="Image for {{ bpo.thumbnailImage }}" />
+       
+       
+       
+       
+       
+       
         <div class="card-body">
           <div class="card-date text-muted small">
             <i class="fa-regular fa-clock"></i>
-            Nov 9, 2024
+            {{ bpo.postDate | date : "mediumDate" }}
           </div>
           <div class="font-weight-bold">
-            <h3 class="card-title bol">Call Center</h3>
+            <h3 class="card-title bol">{{ bpo.title | titlecase }}</h3>
           </div>
 
-          <p class="card-text truncate-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer</p>
+          <p class="card-text truncate-text">{{ bpo.subtitle }}</p>
         </div>
         <div class="card-footer">
           <a
             type="submit"
-            (click)="routingViewPage()"
-            class="btn btn-outline-primary w-100"
-            >View</a
-          >
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div
-        class="card h-100 shadow-sm p-3 bg-body rounded"
-        (click)="routingViewPage()"
-      >
-
-
-        <img src="assets\photo\gallery\callcenter11.jpeg" class="card-img-top" alt="test" />
-        <div class="card-body">
-          <div class="card-date text-muted small">
-            <i class="fa-regular fa-clock"></i>
-            Nov 9, 2024
-          </div>
-          <div class="font-weight-bold">
-            <h3 class="card-title bol">Call Center</h3>
-          </div>
-
-          <p class="card-text truncate-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer</p>
-        </div>
-        <div class="card-footer">
-          <a
-            type="submit"
-            (click)="routingViewPage()"
-            class="btn btn-outline-primary w-100"
-            >View</a
-          >
-        </div>
-      </div>
-    </div>
-
-
-    <div class="col">
-      <div
-        class="card h-100 shadow-sm p-3 bg-body rounded"
-        (click)="routingViewPage()"
-      >
-
-
-        <img src="assets\photo\gallery\callcenter2.jpeg" class="card-img-top" alt="test" />
-        <div class="card-body">
-          <div class="card-date text-muted small">
-            <i class="fa-regular fa-clock"></i>
-            Nov 9, 2024
-          </div>
-          <div class="font-weight-bold">
-            <h3 class="card-title bol">Call Center</h3>
-          </div>
-
-          <p class="card-text truncate-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer</p>
-        </div>
-        <div class="card-footer">
-          <a
-            type="submit"
-            (click)="routingViewPage()"
+            (click)="getGalleryById(bpo.id)"
             class="btn btn-outline-primary w-100"
             >View</a
           >
@@ -101,6 +36,8 @@
     </div>
   </div>
 </div>
+
+
 
 
 

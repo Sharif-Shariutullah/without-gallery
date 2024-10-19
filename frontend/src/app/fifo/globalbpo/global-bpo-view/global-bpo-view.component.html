@@ -1,22 +1,4 @@
-<!-- <div *ngIf="bpo">
-    <h1>{{ bpo.title }}</h1>
-    <p>{{ bpo.subtitle }}</p>
-    <p><strong>Posted on: </strong>{{ bpo.postDate | date:'mediumDate' }}</p>
-  
-    <div class="row">
-      <div class="col-md-6" *ngFor="let image of bpo.images">
-        <img [src]="image.img" class="img-fluid" alt="Image for {{ bpo.title }}">
-        <p>{{ image.caption }}</p>
 
-    </div>
-    </div>
-  
-  </div>
-  
-  <div *ngIf="errorMessage" class="alert alert-danger">
-    {{ errorMessage }}
-  </div>
-   -->
 
 <div class="container my-5" *ngIf="bpo">
   <!-- Title -->
@@ -24,11 +6,11 @@
 
   <!-- thumbnail  -->
 
-  <img
+  <!-- <img
     [src]="bpo.thumbnailImage"
     alt="Image for {{ bpo.thumbnailImage }}"
     class="card-img-top custom-carousel-img"
-  />
+  /> -->
 
   <!-- Subtitle -->
   <h3 class="fs-5 text-muted lh-sm my-3">{{ bpo.subtitle }}</h3>
@@ -97,9 +79,11 @@
         </div>
 
         <!-- <div class="card-body text-center"> -->
-        <div class="caption-overlay">
-          <p class="card-text text-white">{{ image.caption }}</p>
-        </div>
+          <!-- <div class="caption-overlay">
+            <p class="card-text text-white">{{ image.caption }}</p>
+          </div> -->
+
+
       </div>
     </div>
   </div>

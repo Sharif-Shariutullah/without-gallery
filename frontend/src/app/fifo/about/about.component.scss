@@ -1,7 +1,7 @@
 // >>>>>>>>
 
 .about {
-  padding: 130px 0;
+
 }
 
 .about .heading h2 {
@@ -47,8 +47,127 @@
   margin: 8px 0;
 }
 
+.text-primary{
+  color: #1B93D0;
+}
+
 .about h4 i {
   color: #1B93D0;
   margin-right: 10px;
 }
 
+
+h4 {
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+/* Image Styling */
+.vision-img, .mission-img {
+  max-width: 50%;
+  border-radius: 10px;
+  // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+/* Align text and image */
+.mission-vision .col-lg-6 {
+  padding: 20px;
+}
+
+/* Text Styling */
+.mission-vision h3 {
+  color: #29b2e6;
+}
+
+.mission-vision p {
+  color: #0a0a0a;
+  font-weight: 500;
+}
+
+/* Animation Styling */
+.animate__animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+// .animate__fadeInLeft {
+//   animation-name: fadeInLeft;
+// }
+
+// .animate__fadeInRight {
+//   animation-name: fadeInRight;
+// }
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .mission-vision {
+    text-align: center;
+  }
+
+  .mission-vision .col-lg-6 {
+    margin-bottom: 20px;
+  }
+}
+
+
+
+  .mission-vision {
+    text-align: left;
+  }
+
+
+//   /* Custom Animation for Vision (slide from left smoothly) */
+// @keyframes slideInLeft {
+//   0% {
+//     transform: translateX(-100%);
+//     opacity: 0;
+//   }
+//   100% {
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+// }
+
+// /* Custom Animation for Mission (slide from right smoothly) */
+// @keyframes slideInRight {
+//   0% {
+//     transform: translateX(100%);
+//     opacity: 0;
+//   }
+//   100% {
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+// }
+
+// /* Applying Animations */
+// .vision {
+//   animation: slideInLeft 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+//   opacity: 0; /* Initially hidden for fade effect */
+// }
+
+// .mission {
+//   animation: slideInRight 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+//   opacity: 0; /* Initially hidden for fade effect */
+// }
+
+// /* Ensures smooth transition only when the sections are scrolled into view */
+// .vision, .mission {
+//   opacity: 0; /* Hidden by default */
+//   visibility: hidden; /* Hidden until scrolled into view */
+//   transition: visibility 0s linear 0.5s; /* Delayed visibility sync */
+// }
+
+// .in-view .vision, .in-view .mission {
+//   opacity: 1;
+//   visibility: visible;
+// }

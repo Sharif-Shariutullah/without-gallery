@@ -53,6 +53,7 @@ import { NavbarComponent } from './fifo/navbar/navbar.component';
 import { ViewNewsComponent } from './fifo/news/view-news/view-news.component';
 import { GlobalBpoViewComponent } from './fifo/globalbpo/global-bpo-view/global-bpo-view.component';
 import { GalleryViewComponent } from './fifo/gallery/gallery-view/gallery-view.component';
+import { FINANCANDACCOUNTINGComponent } from './fifo/service/financ-and-accounting/financ-and-accounting.component';
 
 
 
@@ -66,7 +67,7 @@ import { GalleryViewComponent } from './fifo/gallery/gallery-view/gallery-view.c
                 SignupComponent, 
                 HomeComponent, 
                 TrackOrderComponent, 
-                CareerComponent, ServiceComponent, NewsComponent, GalleryComponent, ContactComponent, GlobalbpoComponent, AboutComponent, ApplicationFormComponent, CareerViewListComponent, TeamComponent, VideoComponent, ContactCenterComponent, BackOfficeComponent, DigitalMarketingComponent, CreativeDesignComponent, AppDesignDevelopmentComponent, SkillsDevelopmentComponent, TowhidHossainComponent, JahangirHossainUzzalComponent, NurulIslamComponent, TariqulHasanComponent, ObaiduHaqueComponent, AtiaBilkisComponent, RashaduzammanRianComponent, TamannaSharkerComponent, CreateComponent, ListComponent, ViewComponent, DetailsComponent, EditComponent, NavbarComponent, ViewNewsComponent, GlobalBpoViewComponent, GalleryViewComponent],
+                CareerComponent, ServiceComponent, NewsComponent, GalleryComponent, ContactComponent, GlobalbpoComponent, AboutComponent, ApplicationFormComponent, CareerViewListComponent, TeamComponent, VideoComponent, ContactCenterComponent, BackOfficeComponent, DigitalMarketingComponent, CreativeDesignComponent, AppDesignDevelopmentComponent, SkillsDevelopmentComponent, TowhidHossainComponent, JahangirHossainUzzalComponent, NurulIslamComponent, TariqulHasanComponent, ObaiduHaqueComponent, AtiaBilkisComponent, RashaduzammanRianComponent, TamannaSharkerComponent, CreateComponent, ListComponent, ViewComponent, DetailsComponent, EditComponent, NavbarComponent, ViewNewsComponent, GlobalBpoViewComponent, GalleryViewComponent, FINANCANDACCOUNTINGComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

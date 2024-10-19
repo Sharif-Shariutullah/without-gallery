@@ -1,30 +1,75 @@
-<section class="about" id="about" style="
-padding-top: 20px;
-">
+<section class="about" id="about" style="padding-top: 40px">
   <div class="container">
     <div class="heading text-center">
-      <h2 class="text-center pb-2 pt-2 fs-1" style="color: #1B93D0;font-weight: 600;">About
+      <h2
+        class="text-center pb-2 pt-2 fs-1"
+        style="color: #1b93d0; font-weight: 600"
+      >
+        About
         <span>Us</span>
       </h2>
-      <h4 style="font-weight: 600;margin-bottom: 20px;">Welcome to WeTech Hub – Your trusted partner for 
-        <br>
+      <h4 style="font-weight: 600; margin-bottom: 20px">
+        Welcome to WeTech Hub – Your trusted partner for
+        <br />
         top-notch BPO services in Bangladesh.
       </h4>
     </div>
+
+
+
     <div class="row">
       <div class="col-lg-6">
-        <img src="assets\photo\wetechhub.png" alt="about" class="img-fluid" width="100%">
+        <img
+          src="assets\photo\wetechhub.png"
+          alt="about"
+          class="img-fluid"
+          width="80%"
+        />
       </div>
       <div class="col-lg-6">
-        <!-- <h3 style="color: #1B93D0;">Lorem ipsum dolor sit amet, consectetur </h3> -->
-        <p style="text-align: justify;">WeTech Hub distinguishes itself through industry expertise, quality assurance, global reach, and personalized solutions. Backed by a management team with extensive practical experience in the IT/ITES, we excel in understanding and meeting clients' diverse needs effectively. As a proud member of the Global BPO Alliance, we leverage international resources to provide cost-effective solutions with a global footprint, empowering clients to compete on a larger scale. </p>
-        <p style="text-align: justify;">Whether you need inshore or offshore support, we are here to provide seamless, high-value solutions tailored to your organization's unique needs. What truly sets us apart is our ability to provide customized solutions tailored to each client's unique requirements, whether developing a comprehensive digital marketing strategy or designing bespoke applications. </p>
-        <p style="text-align: justify;">Our cutting-edge infrastructure enables us to offer 24/7 support all year round, ensuring your business runs smoothly. With a dedicated team of highly qualified professionals, we deliver integrity, transparency, and superiority in every service aspect, driving tangible results and fostering long-term partnerships with our valued clients. </p>
-        <div class="row">
+        <p style="text-align: justify">
+          WeTech Hub distinguishes itself through industry expertise, quality
+          assurance, global reach, and personalized solutions. Backed by a
+          management team with extensive practical experience in the IT/ITES, we
+          excel in understanding and meeting clients' diverse needs effectively.
+          As a proud member of the Global BPO Alliance, we leverage
+          international resources to provide cost-effective solutions with a
+          global footprint, empowering clients to compete on a larger scale.
+        </p>
+
+        <div *ngIf="readMore">
+        <p style="text-align: justify">
+          Whether you need inshore or offshore support, we are here to provide
+          seamless, high-value solutions tailored to your organization's unique
+          needs. What truly sets us apart is our ability to provide customized
+          solutions tailored to each client's unique requirements, whether
+          developing a comprehensive digital marketing strategy or designing
+          bespoke applications.
+        </p>
+        <p style="text-align: justify">
+          Our cutting-edge infrastructure enables us to offer 24/7 support all
+          year round, ensuring your business runs smoothly. With a dedicated
+          team of highly qualified professionals, we deliver integrity,
+          transparency, and superiority in every service aspect, driving
+          tangible results and fostering long-term partnerships with our valued
+          clients.
+        </p>
+      </div>
+
+
+
+      <button
+          type="submit"
+          mat-raised-button
+          style="background-color: #1b93d0; color: white; font-weight: bold; float: right;"
+          (click)="toggleReadMore()"
+          >
+          {{ readMore ? "Read Less" : "Read More" }}
+        </button>
+
+        <div class="row mt-lg-4 mt-1 py-5">
           <div class="col-md-6">
-            <h4>
-              <i class="far fa-star"></i>Industry expertise
-            </h4>
+            <h4><i class="far fa-star"></i>Industry expertise</h4>
           </div>
           <div class="col-md-6">
             <h4>
@@ -33,35 +78,79 @@ padding-top: 20px;
             </h4>
           </div>
           <div class="col-md-6">
-            <h4>
-              <i class="far fa-star"></i>Customized support
-            </h4>
+            <h4><i class="far fa-star"></i>Customized support</h4>
           </div>
           <div class="col-md-6">
             <h4>
               <i class="far fa-star"></i>
-              Digital Marketing & Branding
+                Professional team
             </h4>
           </div>
           <div class="col-md-6">
-            <h4>
-              <i class="far fa-star"></i>24/7 infrastructure
-            </h4>
+            <h4><i class="far fa-star"></i>24/7 infrastructure</h4>
           </div>
           <div class="col-md-6">
             <h4>
-              <i class="far fa-star"></i>
-              Professional team
-            </h4>
+              <i class="far fa-star"></i>Digital Marketing & Branding</h4>
           </div>
         </div>
+
+
+
       </div>
     </div>
+
+
+<!-- Vision Section -->
+
+<div class="container">
+<div class="row mission-vision mt-2">
+
+
+  <div class="col-lg-6 col-md-12">
+    <!-- Vision Image/Icon -->
+    <img src="assets\photo\vision-icon.png" alt="Mission Icon" class="w-50 img-fluid mission-img " />
+
   </div>
+  <div class="col-lg-6 col-md-12 d-flex align-items-center">
+    <!-- <div class="vision animate__animated animate__fadeInLeft"> -->
+    <div class="vision ">
+      <h3 class=" fw-bold" style="color: #1b93d0; ">Our Vision</h3>
+      <p>
+        We envision driving growth and innovation across diverse industries, setting benchmarks 
+        for quality and service while maintaining a strong commitment to sustainability and 
+        ethical practices.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Mission Section -->
+<div class="row mission-vision mt-2">
+  <div class="col-lg-6 col-md-12 order-lg-2">
+    <!-- Mission Image/Icon -->
+
+    <img src="assets\photo\mission-icon.png" alt="Vision Icon" class=" w-50 img-fluid vision-img" />
+
+  </div>
+  <div class="col-lg-6 col-md-12 order-lg-1 d-flex align-items-center">
+    <!-- <div class="mission animate__animated animate__fadeInRight"> -->
+    <div class="mission ">
+      <h3 class=" fw-bold" style="color: #1b93d0; "> Our Mission</h3>
+      <p>
+        Our mission is to empower the youth by creating sustainable job opportunities, fostering skill 
+        development, and providing them with the tools and resources needed to thrive in today's 
+        competitive market.
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+</div>
 </section>
-
-
-
-
-
-

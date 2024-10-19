@@ -12,219 +12,86 @@ import { PracticeService } from 'src/app/Practice/service/practice.service';
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
-  styleUrls: ['./gallery.component.scss']
+  styleUrls: ['./gallery.component.scss'],
 })
-export class GalleryComponent{
- 
-// frontend ----------------------------------------
+export class GalleryComponent implements OnInit {
+  // frontend ----------------------------------------
 
-routingViewPage(){
-
-  this.route.navigateByUrl('gallery-view');
-}
-
-
-  
-  // constructor(
-  //   private router: Router,
-  //   private serviceClass: PhotoUploadService) { }
-
-
-  // ngOnInit() {
-  //   this.getAllGallery();
-  // }
-
-
-  
-  // //array
-  // galleryDetails = [];
-
-  // public getAllGallery() {
-  //   this.serviceClass.getAllGallery().subscribe(
-  //     (response: photoUploadModel[]) => {
-  //       console.log(response);
-
-  //       this.galleryDetails = response;
-  //     },
-  //     (error: HttpErrorResponse) => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
-
-  // // details page
-  // detailsById(id) {
-  //   // this.router.navigate(['/CareerView', {id:id}]);
-  // }
-
-
-
-
-
- // newly added--------------
-
-
-
-
-
- 
-
-
-  practice: any[] = [];
-
-  searchProductForm!: FormGroup;
-
-  constructor(
-    private practiceService: PracticeService,
-    private fb: FormBuilder,
-    private snackBar: MatSnackBar,
-  private route : Router,
-  ) { }
-
-  ngOnInit() {
-    this.getAllPractice();
-    this.searchProductForm = this.fb.group({
-      title: [null, [Validators.required]]
-
-    })
+  routingViewPage() {
+    // this.route.navigateByUrl('gallery-view');
   }
 
+  constructor(private service: PhotoUploadService, private router: Router) {}
 
-  getAllPractice() {
-    this.practice = [];
-    this.practiceService.getAllPractice().subscribe(res => {
-      res.forEach(element => {
-        element.processedImg = 'data:image/jpeg;base64,' + element.byteImg;
-        this.practice.push(element);
+  // --------------------------frontend -------------------
 
-        // console.log( this.products);  25.08.24 (sunday update)
-        
+  isModalOpen = false;
+  currentImage: string;
+
+  // Method to open the modal with the clicked image
+  openModal(imageSrc: string): void {
+    this.currentImage = imageSrc;
+    this.isModalOpen = true;
+  }
+
+  // Method to close the modal
+  closeModal(): void {
+    this.isModalOpen = false;
+    this.currentImage = '';
+  }
+
+  // --------------------------Backend -------------------
+
+  gallery: photoUploadModel[] = [];
+  errorMessage: string | null = null; // To hold any error messages
+
+  ngOnInit(): void {
+    this.getAllGallery();
+  }
+
+  getAllGallery() {
+    this.service.getAllGallery().subscribe({
+      next: (data) => {
+        this.gallery = data;
+        this.handleImageData(); // Call to handle image data conversion
+        this.handleImageDataThumbnail();
+      },
+      error: (error) => {
+        this.errorMessage = error; // Capture error for display
+      },
+    });
+  }
+
+  private handleImageDataThumbnail() {
+    this.gallery.forEach((gallery) => {
+      // Assuming the thumbnailImage is in a base64 format or needs conversion
+      gallery.thumbnailImage = 'data:image/jpeg;base64,' + gallery.thumbnailImage;
+    });
+  }
+
+  private handleImageData() {
+    this.gallery.forEach((gallery) => {
+      gallery.images.forEach((image) => {
+        // If your backend returns base64 directly, use it directly
+        image.img = 'data:image/jpeg;base64,' + image.img; // Make sure to prepend the correct data URI scheme
       });
-    })
+    });
+  }
+
+  // Helper function to convert Uint8Array to base64
+  private arrayBufferToBase64(buffer: Uint8Array): string {
+    let binary = '';
+    const len = buffer.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(buffer[i]);
+    }
+    return window.btoa(binary); // Convert binary string to base64
   }
 
 
 
-
-  // // serach kaj korche na
-  
-
-
-
-  // submitForm() {
-  //   this.products = [];
-  //   const title = this.searchProductForm.get('title')!.value;
-  //   // console.log(title,'-----title-----'); 25.08.24 (sunday update)
-    
-  //   this.adminService.getAllProductsByName(title).subscribe(res => {
-  //     res.forEach(element => {
-  //       element.processedImg = 'data:image/jpeg;base64,' + element.byteImg;
-  //       this.products.push(element);
-  //     });
-
-  //     // console.log(this.products); 25.08.24 (sunday update)
-
-
-  //   })
-  // }
-
-
-
-
-  // deletePractice(id: any) {
-  //   this.practiceService.deletePractice(id).subscribe(res => {
-  //     if (res == null) {
-  //  this.snackBar.open('practice Deleted Successfully!', 'close', {
-  //       duration: 5000
-  //     });
-  //     this.getAllPractice();
-  //     } else {
-  //       this.snackBar.open(res.message, 'close', {
-  //         duration: 5000,
-  //         panelClass: 'error-snackbar'
-  //       });
-  //     }
-  //     })
-  // }
-
-
-
-
-
-
-
-
-
-
-
-
-
+  // call the details page
+  getGalleryById(id: number) {
+    this.router.navigate(['/gallery-view', id]);
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// file: FileEntity | undefined;
-
-// constructor(
-//   private route: ActivatedRoute,
-//   private fileService: FileUploadService
-// ) { }
-
-
-
-// // ngOnInit(): void {
-// //   const id = +this.route.snapshot.paramMap.get('id')!;
-// //   this.getFileDetails(id);
-// // }
-
-
-// ngOnInit(): void {
-//   const id = +this.route.snapshot.paramMap.get('id')!;  // Check if this value is correct
-//   if (id && id > 0) {  // Ensure the id is valid
-//     this.getFileDetails(id);
-//   } else {
-//     console.error('Invalid ID');
-//   }
-// }
-
-
-
-
-
-
-
-
-
-// // Method to get file details by ID
-// getFileDetails(id: number): void {
-//   this.fileService.getFileDetails(id).subscribe(
-//     (response: FileEntity) => {
-//       this.file = response;
-//     },
-//     (error) => {
-//       console.error('Error fetching file details', error);
-//     }
-//   );
-// }

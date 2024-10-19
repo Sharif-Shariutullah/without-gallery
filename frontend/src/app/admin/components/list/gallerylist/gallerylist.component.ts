@@ -7,79 +7,94 @@ import { PhotoUploadService } from 'src/app/_service/photoUpload/photo-upload.se
 @Component({
   selector: 'app-gallerylist',
   templateUrl: './gallerylist.component.html',
-  styleUrls: ['./gallerylist.component.scss']
+  styleUrls: ['./gallerylist.component.scss'],
 })
 export class GallerylistComponent implements OnInit {
 
+  
+  constructor(private service: PhotoUploadService) {}
 
-  // 1. injecting the service where i http requests/method are made
+  // --------------------------frontend -------------------
 
-  constructor(
-    private router: Router,
-    private service: PhotoUploadService) { }
+  isModalOpen = false;
+  currentImage: string;
 
+  // Method to open the modal with the clicked image
+  openModal(imageSrc: string): void {
+    this.currentImage = imageSrc;
+    this.isModalOpen = true;
+  }
 
-  // 2. creating an object
+  // Method to close the modal
+  closeModal(): void {
+    this.isModalOpen = false;
+    this.currentImage = '';
+  }
 
-  Object: photoUploadModel = {
+  // --------------------------Backend -------------------
 
-    title:'',
-    subtitle: '',
-    details: '',
-    captions: [],
-    images: []
-
-    // galleryImage:
-  };
+  galleryModel: photoUploadModel[] = [];
+  errorMessage: string | null = null; // To hold any error messages
 
   ngOnInit(): void {
     this.getAllGallery();
   }
 
+  getAllGallery() {
+    this.service.getAllGallery().subscribe({
+      next: (data) => {
+        this.galleryModel = data;
+        this.handleImageData(); // Call to handle image data conversion
+      },
+      error: (error) => {
+        this.errorMessage = error; // Capture error for display
+      },
+    });
+  }
 
+  // private handleImageData() {
+  //   this.galleryModel.forEach(bpo => {
+  //     bpo.images.forEach(image => {
+  //       // If your backend returns base64 directly, use it directly
+  //       image.img = 'data:image/jpeg;base64,' + image.img; // Make sure to prepend the correct data URI scheme
+  //     });
+  //   });
+  // }
 
-  // data source which is array 
-  listArray: photoUploadModel[] = [];
+  private handleImageData() {
+    this.galleryModel.forEach((bpo) => {
+      // Convert thumbnail image to base64
+      if (bpo.thumbnailImage) {
+        bpo.thumbnailImage = 'data:image/jpeg;base64,' + bpo.thumbnailImage;
+      }
 
-  // table colomn names 
-  displayedColumns: string[] = ['ID', 'Photo Name', 'Description', 'Edit', 'Delete'];
+      // Handle other images similarly
+      bpo.images.forEach((image) => {
+        image.img = 'data:image/jpeg;base64,' + image.img;
+      });
+    });
+  }
 
+  // Helper function to convert Uint8Array to base64
+  private arrayBufferToBase64(buffer: Uint8Array): string {
+    let binary = '';
+    const len = buffer.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(buffer[i]);
+    }
+    return window.btoa(binary); // Convert binary string to base64
+  }
 
-  // 3. method button method
-
-  public getAllGallery() {
-
-    this.service.getAllGallery().subscribe(
-      (response: photoUploadModel[]) => {
-        console.log(response);
-
-        this.listArray = response;
-      }, (error: HttpErrorResponse) => { console.log(error); }
-    );
-  };
-
-
-
-  // delete news
-  delete(id) {
+  deleteButton(id: number): void {
     this.service.deleteGallery(id).subscribe(
       (response) => {
         console.log(response);
-        this.getAllGallery();
+        // this.loadPosts(); // Refresh the list after deletion
+        this.getAllGallery(); // Refresh the list after deletion
       },
-      (error: HttpErrorResponse) => { console.log(error); }
-    )
-
-
+      (error: HttpErrorResponse) => {
+        console.log(error);
+      }
+    );
   }
-
-
-
-  // edit news
-  edit(id) {
-
-  }
-
-
-
 }

@@ -39,6 +39,7 @@ import { ViewComponent } from './Practice/view/view.component';
 import { ViewNewsComponent } from './fifo/news/view-news/view-news.component';
 import { GlobalBpoViewComponent } from './fifo/globalbpo/global-bpo-view/global-bpo-view.component';
 import { GalleryViewComponent } from './fifo/gallery/gallery-view/gallery-view.component';
+import { FINANCANDACCOUNTINGComponent } from './fifo/service/financ-and-accounting/financ-and-accounting.component';
 
 const routes: Routes = [
 
@@ -53,12 +54,17 @@ const routes: Routes = [
 { path: "contact", component: ContactComponent},
 // { path: "job-Details/:id", component: ApplicationFormComponent},
 { path: "job-Details", component: ApplicationFormComponent},
-{ path: "gallery", component: GalleryComponent},
-{ path: "gallery-view", component: GalleryViewComponent},
-// { path: "gallery/:id", component: GalleryComponent},
+
+
+// { path: "gallery", component: GalleryComponent},
+// { path: "gallery-view/:id", component: GalleryViewComponent},
 
 { path: "globalBpoAlliance", component: GlobalbpoComponent},
 { path: "global-bpo-view/:id", component: GlobalBpoViewComponent},
+
+
+
+
 { path: "news", component: NewsComponent},
 { path: "service", component: ServiceComponent},
 { path: "CareerView", component: CareerViewListComponent},
@@ -71,6 +77,7 @@ const routes: Routes = [
 { path: "digital-marketing", component: DigitalMarketingComponent},
 { path: "skills-development", component: SkillsDevelopmentComponent},
 { path: "client-contact-list", component: ContactMessageComponent},
+{ path: "finance-And-Accounting", component: FINANCANDACCOUNTINGComponent},
 
 
 { path: "towhid-hossain", component: TowhidHossainComponent},

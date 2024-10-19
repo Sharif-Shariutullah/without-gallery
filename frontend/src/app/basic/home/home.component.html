@@ -169,21 +169,58 @@
 
     <div class="col-12 col-md-12 text-center text-lg-start col-lg-7">
       <h2 style="color: #1b93d0; font-weight: 600; font-size: 30px">
-        Before you proceed, learn about our Company
+        Simple
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="play_arrow"
+        ></mat-icon>
+        Secure
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="play_arrow"
+        ></mat-icon>
+        Connected
       </h2>
       <p class="about-text mt-4" style="text-align: left">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged.
+        We simplify complex challenges to make your experience seamless and
+        straightforward. Security is at the heart of everything we do, ensuring
+        that your data and communications remain protected. Stay effortlessly
+        connected with innovative solutions that link your business to the
+        world, empowering you to reach new heights.
       </p>
+
+      <div class="about">
+        <div class="row  mt-1 py-1">
+          <div class="col-md-6">
+            <h4><i class="far fa-star"></i>Simple</h4>
+            <p>
+              Intuitive solutions designed to streamline processes and enhance productivity
+            </p>
+          </div>
+          <div class="col-md-6">
+            <h4>
+              <i class="far fa-star"></i>
+              Secure
+            </h4>
+            <p>Robust security protocols that safeguard your data and ensure peace of mind</p>
+          </div>
+          <div class="col-md-6">
+            <h4><i class="far fa-star"></i>Connected</h4>
+            <p>Seamless connectivity that keeps you linked with your team, clients, and the global market</p>
+          </div>
+         
+        </div>
+      </div>
+
       <div class="text-end me-5">
         <button
           type="submit"
           mat-raised-button
           style="background-color: #1b93d0; color: white; font-weight: bold"
+          routerLink="/about"
+          routerLinkActive="active"
         >
           Read More
         </button>
@@ -230,7 +267,7 @@
                   color: white;
                   font-weight: bold;
                 "
-                routerLink="contact"
+                routerLink="/contact"
                 routerLinkActive="active"
               >
                 Contact Now
@@ -266,7 +303,7 @@
 
     <div class="col-12 col-md-12 text-lg-start col-lg-7">
       <h2 class="fw-bold fs-2 pb-2" style="color: #1b93d0">Why Outsourcing?</h2>
-      <p class="about-text px-2 text-center">
+      <p class="about-text px-2" style="text-align: justify">
         We have a wide range of in-house professionals for your functional
         outsourcing needs. Outsourcing your function can help you with the
         following things:
@@ -288,7 +325,9 @@
           type="submit"
           mat-raised-button
           style="background-color: #1b93d0; color: white; font-weight: bold"
-        >
+          routerLink="/about"
+          routerLinkActive="active"
+          >
           Read More
         </button>
       </div>
@@ -298,7 +337,7 @@
 <!-- 2nd  image with text ---------------------        end -->
 
 <!-- --------------------- carousel start-------------------- -->
-<div class="container py-1">
+<div class="container mt-5">
   <h3 style="color: #1b93d0; font-weight: 600">Gallery</h3>
   <hr class="border-t border-gray-300 w-full" />
 </div>
@@ -372,7 +411,7 @@
       type="submit"
       mat-raised-button
       style="background-color: #1b93d0; color: white; font-weight: bold"
-      routerLink="/gallery"
+      routerLink="/globalBpoAlliance"
       routerLinkActive="active"
     >
       View All

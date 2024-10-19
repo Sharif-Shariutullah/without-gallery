@@ -34,8 +34,7 @@
               "src/styles.scss"
             ],
             "scripts": [
-"src/app/customer/components/dashboard/assets/carosol.js"
-
+              "src/app/customer/components/dashboard/assets/carosol.js"
             ]
           },
           "configurations": {
@@ -43,13 +42,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
+                  "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "10kb",
+                  "maximumError": "12kb"
                 }
               ],
               "outputHashing": "all"

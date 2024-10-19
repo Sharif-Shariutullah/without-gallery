@@ -1,114 +1,100 @@
+<!-- <div class="container"> -->
 
-<div style="padding: 1%"></div>
 
 
-    <div style="
-      padding: 3%;
-      text-align: center;
-      position: static;
-      background-color: rgb(232, 151, 255);
-    ">
-      <h1> <b> See Your Gallery List</b></h1>
-    <h3>You can <b>Update</b> & <b>Delete</b></h3>
-
-    <button mat-icon-button aria-label="Applicants">
-        <mat-icon style="font-size: 25px;">notifications</mat-icon>
-        <span  matBadge="{{ listArray.length }}" matBadgeColor="warn" matBadgeOverlap="false" ></span>
-      </button>
-      
+  <div class="py-5 container" style="align-items: center; justify-content: center; text-align: center;">
+    <button type="submit" class="btn btn-success btn-block fs-3" routerLink="/photoUploadToGallery" routerLinkActive="Active">
+      <i class="fa-solid fa-circle-plus"></i>&nbsp; Add More
+    </button>
+  </div>
+  
+  <div class="container mt-5">
+    <h1 class="text-center mb-4 text-primary fs-1">
+      <i class="fas fa-list-alt"></i> Gallery  List
+    </h1>
+    <div *ngIf="errorMessage" class="error">
+      {{ errorMessage }}
     </div>
-
-
-
-
-
-<div class="container mt-5 p-2">
-
-
-
-
-    <table mat-table [dataSource]="listArray" class="mat-elevation-z8">
-
-       <!-- ID Column -->
-       <ng-container matColumnDef="ID">
-        <th mat-header-cell *matHeaderCellDef style="background-color: aquamarine;"> <b>ID</b> </th>
-        <td mat-cell *matCellDef="let element" style="background-color: grey;"> <b>{{element.galleryId}}</b> </td>
-    </ng-container>
-
-   
-        <!-- Job Title Column -->
-        <ng-container matColumnDef="Photo Name"> 
-            <th mat-header-cell *matHeaderCellDef style="background-color: aquamarine;"> <b>Photo Name</b> </th>
-            <td mat-cell *matCellDef="let element"> {{element.galleryName}} </td>
-        </ng-container>
-
-        <!-- Job Description Column -->
-        <ng-container matColumnDef="Description">
-            <th mat-header-cell *matHeaderCellDef style="background-color: aquamarine;"> <b>Description</b> </th>
-            <td mat-cell *matCellDef="let element"> {{element.galleryDetails}} </td>
-        </ng-container>
-
-
-        <!-- Experience Column -->
-        <!-- <ng-container matColumnDef="Image">
-            <th mat-header-cell *matHeaderCellDef style="background-color: rgb(127, 129, 128);"> <b>Image</b> </th>
-            <td mat-cell *matCellDef="let element" style="text-align: center;"> <b>{{element.imageUrl}}</b> </td>
-       
-            <button mat-icon-button color="primary">
-                <mat-icon>image</mat-icon>    
-                </button>
-            
-       
-        </ng-container> -->
-
-      
-
-
-
-   
-
-
-          <!-- Edit Column -->
-          <ng-container matColumnDef="Edit">
-            <th mat-header-cell *matHeaderCellDef style="background-color: aquamarine;"> <b>Edit</b>
-            
-            </th>
-            <td mat-cell *matCellDef="let element"> 
-                
-                <button mat-icon-button color="primary" (click)="edit(element.galleryId)">
-                <mat-icon>edit</mat-icon>    
-                </button>
-            
-            
-            
+    
+    <!-- <div class="container"> -->
+      <table class="bpo-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th><i class="fa-solid fa-fingerprint"></i> Id</th>
+  
+            <th><i class="fa-solid fa-panorama"></i> Thumbnail</th>
+            <th><i class="fas fa-folder"></i> Title</th>
+            <th><i class="fas fa-tag"></i> Subtitle</th>
+            <th class="details-column"><i class="fas fa-info-circle"></i> Details</th>
+            <th><i class="fas fa-calendar-alt"></i> Posted On</th>
+            <th><i class="fas fa-images"></i> Images</th> 
+            <th><i class="fa-solid fa-trash text-danger"></i> Delete</th> 
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bpo of galleryModel; let i = index" class="bpo-item">
+  
+            <td class="bg-dark-subtle"> {{ i + 1 }}</td>
+  
+            <td>{{ bpo.id }}</td>
+           <!-- Thumbnail Image Preview -->
+           <td>
+            <img *ngIf="bpo.thumbnailImage" [src]="bpo.thumbnailImage" alt="Thumbnail" class="bpo-image" (click)="openModal(bpo.thumbnailImage)" width="100px" height="100px" />
+          </td>
+            <td>{{ bpo.title }}</td>
+            <td>{{ bpo.subtitle }}</td>
+            <td class="details-column">{{ bpo.details }}</td>
+            <td>{{ bpo.postDate }}</td>
+            <td>
+              <div class="image-list">
+                <div *ngFor="let image of bpo.images; let i = index" class="image-item">
+                  <img [src]="image.img" alt="{{ image.caption }}" class="bpo-image" (click)="openModal(image.img)" />
+                  <p class="image-caption">{{ image.caption }}</p>
+  
+                </div>
+              </div>
             </td>
-        </ng-container>
- 
-
-          <!-- Delete Column -->
-          <ng-container matColumnDef="Delete">
-            <th mat-header-cell *matHeaderCellDef style="background-color: rgb(184, 255, 211);"> <b>Delete</b> </th>
-            <td mat-cell *matCellDef="let element"> 
-                
-                
-                <button mat-icon-button color="warn" (click)="delete(element.galleryId)">
-                    <mat-icon>delete</mat-icon>    
-                    </button>
+  
+  
+    <td>
+  
+    <i class="fa-solid fa-trash text-danger" (click)="deleteButton(bpo.id)"></i> 
+  
+  
+    </td>
+  
             
-            
-            
-            </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-
-
-
-
-
-
-
-
-</div>
+          </tr>
+        </tbody>
+      </table>
+    <!-- </div> -->
+    
+    <!-- Modal for displaying enlarged image -->
+    <div class="modal" *ngIf="isModalOpen">
+      <div class="modal-content">
+        <span class="close" (click)="closeModal()"><i class="fa-solid fa-rectangle-xmark"></i></span>
+        <img [src]="currentImage" class="modal-image" />
+      </div>
+    </div>
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- </div> -->
